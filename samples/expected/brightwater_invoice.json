@@ -1,0 +1,1 @@
+{"schema": "invoice", "fields": {"supplier_name": "Brightwater Office Supplies Ltd", "invoice_number": "BW-2026-0412", "invoice_date": "2026-10-14", "due_date": "2026-11-13", "purchase_order": "PO-77215", "currency": "GBP", "subtotal": 522.50, "tax_amount": 104.50, "total_amount": 627.00, "supplier_vat_number": "GB123456789", "bank_iban": "GB82WEST12345698765432"}}

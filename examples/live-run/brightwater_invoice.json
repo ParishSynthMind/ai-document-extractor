@@ -1,0 +1,76 @@
+{
+  "file": "brightwater_invoice.pdf",
+  "schema": "invoice",
+  "method": "pdf-text",
+  "pages": 1,
+  "fields": {
+    "supplier_name": {
+      "value": "Brightwater Office Supplies Ltd",
+      "confidence": "high",
+      "source_snippet": "Brightwater Office Supplies Ltd",
+      "checks": []
+    },
+    "invoice_number": {
+      "value": "BW-2026-0412",
+      "confidence": "high",
+      "source_snippet": "Invoice No: BW-2026-0412",
+      "checks": []
+    },
+    "invoice_date": {
+      "value": "2026-10-14",
+      "confidence": "high",
+      "source_snippet": "Invoice Date: 14 October 2026",
+      "checks": []
+    },
+    "due_date": {
+      "value": "2026-11-13",
+      "confidence": "high",
+      "source_snippet": "Payment Due: 13 November 2026",
+      "checks": []
+    },
+    "purchase_order": {
+      "value": "PO-77215",
+      "confidence": "high",
+      "source_snippet": "Your PO: PO-77215",
+      "checks": []
+    },
+    "currency": {
+      "value": "GBP",
+      "confidence": "high",
+      "source_snippet": "Total due GBP 627.00",
+      "checks": []
+    },
+    "subtotal": {
+      "value": 522.5,
+      "confidence": "high",
+      "source_snippet": "Subtotal GBP 522.50",
+      "checks": []
+    },
+    "tax_amount": {
+      "value": 104.5,
+      "confidence": "high",
+      "source_snippet": "VAT @ 20% GBP 104.50",
+      "checks": []
+    },
+    "total_amount": {
+      "value": 627,
+      "confidence": "high",
+      "source_snippet": "Total due GBP 627.00",
+      "checks": []
+    },
+    "supplier_vat_number": {
+      "value": "GB123456789",
+      "confidence": "high",
+      "source_snippet": "VAT No: GB 123 4567 89",
+      "checks": []
+    },
+    "bank_iban": {
+      "value": "GB82WEST12345698765432",
+      "confidence": "high",
+      "source_snippet": "IBAN: GB82 WEST 1234 5698 7654 32",
+      "checks": []
+    }
+  },
+  "needs_review": [],
+  "extracted_at": "2026-11-01T15:59:45Z"
+}

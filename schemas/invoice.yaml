@@ -1,0 +1,14 @@
+name: invoice
+description: A supplier invoice sent to us for payment.
+fields:
+  - {name: supplier_name, type: string, required: true, description: "Legal name of the company that issued the invoice."}
+  - {name: invoice_number, type: string, required: true, description: "The supplier's invoice number or reference."}
+  - {name: invoice_date, type: date, required: true, description: "Date the invoice was issued, as YYYY-MM-DD."}
+  - {name: due_date, type: date, description: "Payment due date, as YYYY-MM-DD."}
+  - {name: purchase_order, type: string, description: "Our purchase order (PO) number, if quoted."}
+  - {name: currency, type: string, required: true, description: "Three-letter currency code, e.g. GBP, USD, AED."}
+  - {name: subtotal, type: number, description: "Total before tax."}
+  - {name: tax_amount, type: number, description: "Total tax / VAT amount."}
+  - {name: total_amount, type: number, required: true, description: "Amount payable including tax."}
+  - {name: supplier_vat_number, type: string, description: "Supplier's VAT or tax registration number."}
+  - {name: bank_iban, type: string, description: "IBAN the supplier wants to be paid into, without spaces."}

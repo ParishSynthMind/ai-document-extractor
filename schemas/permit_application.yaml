@@ -1,0 +1,14 @@
+name: permit_application
+description: A building or works permit application submitted to a council or authority.
+fields:
+  - {name: applicant_name, type: string, required: true, description: "Full name of the person or company applying."}
+  - {name: applicant_email, type: string, description: "Applicant's contact email."}
+  - {name: applicant_phone, type: string, description: "Applicant's contact phone number."}
+  - {name: site_address, type: string, required: true, description: "Full address of the site the works are at."}
+  - {name: permit_type, type: string, required: true, description: "Type of permit applied for, e.g. Building, Demolition, Signage."}
+  - {name: work_description, type: string, required: true, description: "Short description of the proposed works."}
+  - {name: estimated_cost, type: number, description: "Estimated cost of the works."}
+  - {name: start_date, type: date, description: "Planned start date, as YYYY-MM-DD."}
+  - {name: contractor_name, type: string, description: "Name of the contractor carrying out the works."}
+  - {name: contractor_licence_number, type: string, required: true, description: "The contractor's licence or registration number."}
+  - {name: parcel_number, type: string, description: "Land parcel / plot / lot reference number."}

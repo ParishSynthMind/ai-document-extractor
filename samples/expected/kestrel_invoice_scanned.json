@@ -1,0 +1,1 @@
+{"schema": "invoice", "fields": {"supplier_name": "Kestrel Marine Services LLC", "invoice_number": "KMS-88317", "invoice_date": "2026-10-03", "due_date": "2026-11-02", "purchase_order": "PO-77198", "currency": "USD", "subtotal": 4900.00, "tax_amount": 245.00, "total_amount": 5145.00, "supplier_vat_number": "100-2345-6789-003", "bank_iban": "AE070331234567890123456"}}

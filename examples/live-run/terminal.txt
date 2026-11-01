@@ -1,0 +1,8 @@
+brightwater_invoice.pdf: 11/11 fields found via pdf-text (high 11, medium 0, low 0)
+kestrel_invoice_scanned.pdf: 10/11 fields found via ocr (high 3, medium 4, low 3)
+  needs review: invoice_date (model marked it low confidence); due_date (model marked it low confidence); purchase_order (in the document but unreadable); bank_iban (value not found word for word in the document)
+oakfield_invoice.xlsx: 11/11 fields found via xlsx (high 11, medium 0, low 0)
+wrote examples/live-run/invoices_batch.csv (3 ok, 0 failed)
+permit_application_riverside.docx: 10/11 fields found via docx (high 10, medium 0, low 0)
+  needs review: contractor_licence_number (required field missing)
+staff_credential_export.csv: 9/9 fields found via csv (high 8, medium 1, low 0)

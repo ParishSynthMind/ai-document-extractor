@@ -1,0 +1,81 @@
+{
+  "file": "permit_application_riverside.docx",
+  "schema": "permit_application",
+  "method": "docx",
+  "pages": 1,
+  "fields": {
+    "applicant_name": {
+      "value": "Riverside Bakery Partners",
+      "confidence": "high",
+      "source_snippet": "Riverside Bakery Partners",
+      "checks": []
+    },
+    "applicant_email": {
+      "value": "permits@riverside-bakery.example",
+      "confidence": "high",
+      "source_snippet": "permits@riverside-bakery.example",
+      "checks": []
+    },
+    "applicant_phone": {
+      "value": "+44 7700 900123",
+      "confidence": "high",
+      "source_snippet": "+44 7700 900123",
+      "checks": []
+    },
+    "site_address": {
+      "value": "22 Mill Lane, Fictionville FV3 4RT",
+      "confidence": "high",
+      "source_snippet": "22 Mill Lane, Fictionville FV3 4RT",
+      "checks": []
+    },
+    "permit_type": {
+      "value": "Building (commercial alteration)",
+      "confidence": "high",
+      "source_snippet": "Building (commercial alteration)",
+      "checks": []
+    },
+    "work_description": {
+      "value": "Install a new commercial oven extraction duct through the rear wall and add a fire-rated partition to the bakehouse.",
+      "confidence": "high",
+      "source_snippet": "Install a new commercial oven extraction duct through the rear wall and add a fire-rated partition to the bakehouse.",
+      "checks": []
+    },
+    "estimated_cost": {
+      "value": 38500,
+      "confidence": "high",
+      "source_snippet": "GBP 38,500",
+      "checks": []
+    },
+    "start_date": {
+      "value": "2027-02-01",
+      "confidence": "high",
+      "source_snippet": "1 February 2027",
+      "checks": []
+    },
+    "contractor_name": {
+      "value": "Hartley & Moss Builders",
+      "confidence": "high",
+      "source_snippet": "Hartley & Moss Builders",
+      "checks": []
+    },
+    "contractor_licence_number": {
+      "value": null,
+      "confidence": "high",
+      "source_snippet": "",
+      "checks": []
+    },
+    "parcel_number": {
+      "value": "FV-PL-0098-17",
+      "confidence": "high",
+      "source_snippet": "FV-PL-0098-17",
+      "checks": []
+    }
+  },
+  "needs_review": [
+    {
+      "field": "contractor_licence_number",
+      "reason": "required field missing"
+    }
+  ],
+  "extracted_at": "2026-11-01T15:59:58Z"
+}

@@ -1,0 +1,1 @@
+{"schema": "invoice", "fields": {"supplier_name": "Oakfield Catering Co.", "invoice_number": "OC/26/1093", "invoice_date": "2026-10-21", "due_date": "2026-11-04", "purchase_order": "PO-77240", "currency": "GBP", "subtotal": 378.00, "tax_amount": 75.60, "total_amount": 453.60, "supplier_vat_number": "GB987654321", "bank_iban": "GB33BUKB20201555555555"}}

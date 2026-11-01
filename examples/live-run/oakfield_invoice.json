@@ -1,0 +1,76 @@
+{
+  "file": "oakfield_invoice.xlsx",
+  "schema": "invoice",
+  "method": "xlsx",
+  "pages": 1,
+  "fields": {
+    "supplier_name": {
+      "value": "Oakfield Catering Co.",
+      "confidence": "high",
+      "source_snippet": "Oakfield Catering Co.",
+      "checks": []
+    },
+    "invoice_number": {
+      "value": "OC/26/1093",
+      "confidence": "high",
+      "source_snippet": "Invoice number | OC/26/1093",
+      "checks": []
+    },
+    "invoice_date": {
+      "value": "2026-10-21",
+      "confidence": "high",
+      "source_snippet": "Invoice date | 2026-10-21",
+      "checks": []
+    },
+    "due_date": {
+      "value": "2026-11-04",
+      "confidence": "high",
+      "source_snippet": "Due date | 2026-11-04",
+      "checks": []
+    },
+    "purchase_order": {
+      "value": "PO-77240",
+      "confidence": "high",
+      "source_snippet": "Customer PO | PO-77240",
+      "checks": []
+    },
+    "currency": {
+      "value": "GBP",
+      "confidence": "high",
+      "source_snippet": "Total GBP |  |  | 453.6",
+      "checks": []
+    },
+    "subtotal": {
+      "value": 378,
+      "confidence": "high",
+      "source_snippet": "Net |  |  | 378",
+      "checks": []
+    },
+    "tax_amount": {
+      "value": 75.6,
+      "confidence": "high",
+      "source_snippet": "VAT 20% |  |  | 75.6",
+      "checks": []
+    },
+    "total_amount": {
+      "value": 453.6,
+      "confidence": "high",
+      "source_snippet": "Total GBP |  |  | 453.6",
+      "checks": []
+    },
+    "supplier_vat_number": {
+      "value": "GB987654321",
+      "confidence": "high",
+      "source_snippet": "VAT reg: GB 987 6543 21",
+      "checks": []
+    },
+    "bank_iban": {
+      "value": "GB33BUKB20201555555555",
+      "confidence": "high",
+      "source_snippet": "Pay to IBAN | GB33 BUKB 2020 1555 5555 55",
+      "checks": []
+    }
+  },
+  "needs_review": [],
+  "extracted_at": "2026-11-01T15:59:53Z"
+}

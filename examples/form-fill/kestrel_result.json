@@ -1,0 +1,93 @@
+{
+  "file": "kestrel_invoice_scanned.pdf",
+  "schema": "invoice",
+  "method": "ocr",
+  "pages": 1,
+  "fields": {
+    "supplier_name": {
+      "value": "Kestrel Marine Services LLC",
+      "confidence": "high",
+      "source_snippet": "KESTREL MARINE SERVICES LLC",
+      "checks": []
+    },
+    "invoice_number": {
+      "value": "KMS-88317",
+      "confidence": "high",
+      "source_snippet": "Invoice #. KMS-88317",
+      "checks": []
+    },
+    "invoice_date": {
+      "value": "2026-03-10",
+      "confidence": "low",
+      "source_snippet": "Date. _ 03/10/2026",
+      "checks": []
+    },
+    "due_date": {
+      "value": "2026-11-02",
+      "confidence": "low",
+      "source_snippet": "Due . 02/11/2026.",
+      "checks": []
+    },
+    "purchase_order": {
+      "value": null,
+      "confidence": "low",
+      "source_snippet": "PO-Ref. . PO- 7am",
+      "checks": []
+    },
+    "currency": {
+      "value": "USD",
+      "confidence": "high",
+      "source_snippet": "\u201cTOTAL USD . 5,145.00",
+      "checks": []
+    },
+    "subtotal": {
+      "value": 4900,
+      "confidence": "medium",
+      "source_snippet": "\u201cSubtotal ~~ 4,900.00",
+      "checks": []
+    },
+    "tax_amount": {
+      "value": 245,
+      "confidence": "medium",
+      "source_snippet": "\u201cVAT 5% 245.00",
+      "checks": []
+    },
+    "total_amount": {
+      "value": 5145,
+      "confidence": "high",
+      "source_snippet": "\u201cTOTAL USD . 5,145.00",
+      "checks": []
+    },
+    "supplier_vat_number": {
+      "value": "100-2345-6789-003",
+      "confidence": "medium",
+      "source_snippet": "TRN / VAT: 100-2345-6789-003 :",
+      "checks": []
+    },
+    "bank_iban": {
+      "value": "AEO703312345678901234 56",
+      "confidence": "low",
+      "source_snippet": "IBAN: AEO7 0331, 2345 6789 0123 456.",
+      "checks": []
+    }
+  },
+  "needs_review": [
+    {
+      "field": "invoice_date",
+      "reason": "model marked it low confidence"
+    },
+    {
+      "field": "due_date",
+      "reason": "model marked it low confidence"
+    },
+    {
+      "field": "purchase_order",
+      "reason": "in the document but unreadable"
+    },
+    {
+      "field": "bank_iban",
+      "reason": "model marked it low confidence"
+    }
+  ],
+  "extracted_at": "2026-11-01T16:00:09Z"
+}
