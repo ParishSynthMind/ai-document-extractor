@@ -97,7 +97,7 @@ All invented: fake companies, fake people, fake numbers. `samples/make_samples.p
 pytest          # 37 tests, Claude mocked, no API key needed
 ```
 
-They cover schema loading and validation, the strict JSON schema sent to Claude, every loader (including a real Tesseract OCR test, skipped if Tesseract isn't installed), each check in the verification step, form filling and the review copy's boxes, Excel rows and colours, batch CSV with a failing file, the CLI, and the shape of the Claude request. A GitHub Actions workflow that runs them on every push (Tesseract installed, no secrets) is written and will be added shortly.
+They cover schema loading and validation, the strict JSON schema sent to Claude, every loader (including a real Tesseract OCR test, skipped if Tesseract isn't installed), each check in the verification step, form filling and the review copy's boxes, Excel rows and colours, batch CSV with a failing file, the CLI, and the shape of the Claude request. GitHub Actions runs them on every push with Tesseract installed and no secrets.
 
 ## Tested live
 
