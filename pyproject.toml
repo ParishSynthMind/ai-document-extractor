@@ -16,14 +16,24 @@ dependencies = [
   "python-docx>=1.1",
   "openpyxl>=3.1",
   "PyYAML>=6.0",
+  "requests>=2.31",
 ]
 
 [project.scripts]
 extract = "doc_extractor.cli:main"
+qbo-push = "doc_extractor.quickbooks.cli:main"
 
 [tool.setuptools]
-packages = ["doc_extractor"]
+packages = ["doc_extractor", "doc_extractor.quickbooks"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 pythonpath = ["."]
+
+[tool.ruff]
+line-length = 120
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I"]
+ignore = ["E501", "E731"]  # long prompt strings and one small lambda are fine

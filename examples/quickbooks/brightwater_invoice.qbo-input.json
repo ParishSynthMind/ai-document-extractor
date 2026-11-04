@@ -1,0 +1,107 @@
+{
+  "extraction": {
+    "file": "brightwater_invoice.pdf",
+    "schema": "invoice",
+    "method": "pdf-text",
+    "pages": 1,
+    "fields": {
+      "supplier_name": {
+        "value": "Brightwater Office Supplies Ltd",
+        "confidence": "high",
+        "source_snippet": "Brightwater Office Supplies Ltd",
+        "checks": []
+      },
+      "invoice_number": {
+        "value": "BW-2026-0412",
+        "confidence": "high",
+        "source_snippet": "Invoice No: BW-2026-0412",
+        "checks": []
+      },
+      "invoice_date": {
+        "value": "2026-10-14",
+        "confidence": "high",
+        "source_snippet": "Invoice Date: 14 October 2026",
+        "checks": []
+      },
+      "due_date": {
+        "value": "2026-11-13",
+        "confidence": "high",
+        "source_snippet": "Payment Due: 13 November 2026",
+        "checks": []
+      },
+      "purchase_order": {
+        "value": "PO-77215",
+        "confidence": "high",
+        "source_snippet": "Your PO: PO-77215",
+        "checks": []
+      },
+      "currency": {
+        "value": "GBP",
+        "confidence": "high",
+        "source_snippet": "Total due GBP 627.00",
+        "checks": []
+      },
+      "subtotal": {
+        "value": 522.5,
+        "confidence": "high",
+        "source_snippet": "Subtotal GBP 522.50",
+        "checks": []
+      },
+      "tax_amount": {
+        "value": 104.5,
+        "confidence": "high",
+        "source_snippet": "VAT @ 20% GBP 104.50",
+        "checks": []
+      },
+      "total_amount": {
+        "value": 627,
+        "confidence": "high",
+        "source_snippet": "Total due GBP 627.00",
+        "checks": []
+      },
+      "supplier_vat_number": {
+        "value": "GB123456789",
+        "confidence": "high",
+        "source_snippet": "VAT No: GB 123 4567 89",
+        "checks": []
+      },
+      "bank_iban": {
+        "value": "GB82WEST12345698765432",
+        "confidence": "high",
+        "source_snippet": "IBAN: GB82 WEST 1234 5698 7654 32",
+        "checks": []
+      }
+    },
+    "needs_review": [],
+    "extracted_at": "2026-11-04T05:20:31Z"
+  },
+  "line_items": [
+    {
+      "description": "A4 copier paper, 80gsm (box of 5 reams)",
+      "amount": 258,
+      "quantity": 12,
+      "unit_price": 21.5,
+      "confidence": "high",
+      "source_snippet": "A4 copier paper, 80gsm (box of 5 reams) 12 GBP 21.50 GBP 258.00",
+      "checks": []
+    },
+    {
+      "description": "Black toner cartridge TN-2420",
+      "amount": 192,
+      "quantity": 4,
+      "unit_price": 48,
+      "confidence": "high",
+      "source_snippet": "Black toner cartridge TN-2420 4 GBP 48.00 GBP 192.00",
+      "checks": []
+    },
+    {
+      "description": "Desk organiser, mesh",
+      "amount": 72.5,
+      "quantity": 10,
+      "unit_price": 7.25,
+      "confidence": "high",
+      "source_snippet": "Desk organiser, mesh 10 GBP 7.25 GBP 72.50",
+      "checks": []
+    }
+  ]
+}

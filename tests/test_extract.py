@@ -1,4 +1,5 @@
 from conftest import FakeExtractor, answer, brightwater_answers
+
 from doc_extractor.extract import extract_document, extract_file, snippet_in_document
 from doc_extractor.loaders import LoadedDocument
 from doc_extractor.schemas import load_schema

@@ -7,3 +7,6 @@ __pycache__/
 PORTFOLIO-LISTING.md
 PROGRESS.md
 results/
+.qbo_tokens.json
+*.tmp
+qbo-results/

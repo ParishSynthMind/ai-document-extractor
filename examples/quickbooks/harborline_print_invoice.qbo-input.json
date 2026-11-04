@@ -1,0 +1,107 @@
+{
+  "extraction": {
+    "file": "harborline_print_invoice.docx",
+    "schema": "invoice",
+    "method": "docx",
+    "pages": 1,
+    "fields": {
+      "supplier_name": {
+        "value": "Harborline Print & Sign Co.",
+        "confidence": "high",
+        "source_snippet": "Harborline Print & Sign Co.",
+        "checks": []
+      },
+      "invoice_number": {
+        "value": "HPS-2291",
+        "confidence": "high",
+        "source_snippet": "INVOICE HPS-2291",
+        "checks": []
+      },
+      "invoice_date": {
+        "value": "2026-10-30",
+        "confidence": "high",
+        "source_snippet": "Invoice date: 2026-10-30",
+        "checks": []
+      },
+      "due_date": {
+        "value": "2026-11-14",
+        "confidence": "high",
+        "source_snippet": "Payment due: 2026-11-14",
+        "checks": []
+      },
+      "purchase_order": {
+        "value": null,
+        "confidence": "high",
+        "source_snippet": "",
+        "checks": []
+      },
+      "currency": {
+        "value": "USD",
+        "confidence": "high",
+        "source_snippet": "Currency: USD",
+        "checks": []
+      },
+      "subtotal": {
+        "value": 504.0,
+        "confidence": "high",
+        "source_snippet": "Subtotal: 504.00",
+        "checks": []
+      },
+      "tax_amount": {
+        "value": 35.28,
+        "confidence": "high",
+        "source_snippet": "Sales tax 7%: 35.28",
+        "checks": []
+      },
+      "total_amount": {
+        "value": 539.28,
+        "confidence": "high",
+        "source_snippet": "Total due: USD 539.28",
+        "checks": []
+      },
+      "supplier_vat_number": {
+        "value": null,
+        "confidence": "high",
+        "source_snippet": "",
+        "checks": []
+      },
+      "bank_iban": {
+        "value": null,
+        "confidence": "high",
+        "source_snippet": "",
+        "checks": []
+      }
+    },
+    "needs_review": [],
+    "extracted_at": "2026-11-04T05:20:10Z"
+  },
+  "line_items": [
+    {
+      "description": "Vinyl window banner, 6ft x 2ft",
+      "amount": 290,
+      "quantity": 2,
+      "unit_price": 145,
+      "confidence": "high",
+      "source_snippet": "Vinyl window banner, 6ft x 2ft | 2 | 145.00 | 290.00",
+      "checks": []
+    },
+    {
+      "description": "Business cards, 500 per box",
+      "amount": 154,
+      "quantity": 4,
+      "unit_price": 38.5,
+      "confidence": "high",
+      "source_snippet": "Business cards, 500 per box | 4 | 38.50 | 154.00",
+      "checks": []
+    },
+    {
+      "description": "Design proof and setup",
+      "amount": 60,
+      "quantity": 1,
+      "unit_price": 60,
+      "confidence": "medium",
+      "source_snippet": "Design proof and setup | 1 | 60.00",
+      "checks": []
+    }
+  ]
+}

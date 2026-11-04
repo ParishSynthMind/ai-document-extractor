@@ -1,6 +1,6 @@
 import pytest
-
 from conftest import tesseract_available
+
 from doc_extractor.loaders import UnsupportedFile, load, load_pdf
 
 

@@ -1,0 +1,32 @@
+summit_it_invoice.pdf: CREATED  Summit Ridge IT Services LLC #SR-10482  total 1,930.53
+  bill Id 145, vendor Id 58, read back OK
+      1,200.00  Legal & Professional Fees  Managed IT support, October 2026
+        330.00  Dues & Subscriptions       Microsoft 365 Business licences
+        370.00  Computer Repairs           Laptop repair (screen replacement)
+         30.53  Taxes & Licenses           Tax shown on the invoice
+  - vendor 'Summit Ridge IT Services LLC' did not exist; created it (Id 58)
+harborline_print_invoice.docx: CREATED  Harborline Print & Sign Co. #HPS-2291  total 539.28
+  bill Id 146, vendor Id 59, read back OK
+        290.00  Advertising                Vinyl window banner, 6ft x 2ft
+        154.00  Stationery & Printing      Business cards, 500 per box
+         60.00  Uncategorized Expense      Design proof and setup
+         35.28  Taxes & Licenses           Tax shown on the invoice
+  - vendor 'Harborline Print & Sign Co.' did not exist; created it (Id 59)
+greenleaf_janitorial_invoice.xlsx: CREATED  Greenleaf Janitorial Inc. #GJ-7734  total 906.40
+  bill Id 147, vendor Id 60, read back OK
+        700.00  Uncategorized Expense      Weekly office cleaning, October
+         86.40  Supplies                   Restroom supplies (soap, paper towels)
+        120.00  Uncategorized Expense      Floor buffing, reception
+  - vendor 'Greenleaf Janitorial Inc.' did not exist; created it (Id 60)
+  - account 'Cleaning Services' not found; used the default 'Uncategorized Expense' instead
+kestrel_invoice_scanned.pdf: HELD FOR REVIEW  KESTREL MARINE SERVICES LLC #KMS-88317  total 5,145.00
+  ! invoice_date: model marked it low confidence
+  ! due_date: model marked it low confidence
+  - subtotal was medium confidence (4900)
+  - tax_amount was medium confidence (245)
+  - total_amount was medium confidence (5145)
+brightwater_invoice.pdf: HELD FOR REVIEW  Brightwater Office Supplies Ltd #BW-2026-0412  total 627.00
+  ! currency: invoice is GBP, the company's home currency is USD and multicurrency bills are not handled
+
+3 created, 2 held
+token refreshed 1x; the new refresh token was saved to the keychain store

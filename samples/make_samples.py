@@ -11,6 +11,7 @@ Creates:
   samples/permit_application_riverside.docx    Word form, contractor licence number left blank
   samples/staff_credential_export.csv          label,value export from an HR system
   forms/invoice_entry_form.pdf                 fillable accounts-payable entry form
+  samples/invoices_us/*                        three USD invoices with line items, for the QuickBooks push
 """
 from __future__ import annotations
 
@@ -21,6 +22,7 @@ ROOT = Path(__file__).resolve().parent.parent
 SAMPLES = ROOT / "samples"
 INVOICES = SAMPLES / "invoices"
 FORMS = ROOT / "forms"
+US = SAMPLES / "invoices_us"  # USD invoices for the QuickBooks demo
 
 
 def brightwater_pdf(path: Path) -> None:
@@ -244,6 +246,105 @@ def invoice_form(path: Path) -> None:
     c.save()
 
 
+def summit_it_pdf(path: Path) -> None:
+    """US supplier, digital PDF, three lines plus sales tax. For the QuickBooks demo."""
+    from reportlab.lib.pagesizes import LETTER
+    from reportlab.pdfgen import canvas
+
+    c = canvas.Canvas(str(path), pagesize=LETTER)
+    w, h = LETTER
+    c.setFont("Helvetica-Bold", 20)
+    c.drawString(50, h - 70, "Summit Ridge IT Services LLC")
+    c.setFont("Helvetica", 9)
+    c.drawString(50, h - 86, "410 Example Parkway, Suite 200, Springfield, ZZ 00000  |  EIN 00-0000000")
+    c.setFont("Helvetica-Bold", 16)
+    c.drawRightString(w - 50, h - 70, "INVOICE")
+    c.setFont("Helvetica", 10)
+    y = h - 130
+    for label, value in [("Invoice No:", "SR-10482"), ("Invoice Date:", "October 28, 2026"),
+                         ("Due Date:", "November 27, 2026"), ("Terms:", "Net 30")]:
+        c.drawString(360, y, label)
+        c.drawString(450, y, value)
+        y -= 16
+    c.drawString(50, h - 130, "Bill to:")
+    c.drawString(50, h - 146, "Example Clinic Group Inc.")
+    c.drawString(50, h - 162, "1 Sample Street, Testville, ZZ 00001")
+    y = h - 240
+    c.setFont("Helvetica-Bold", 10)
+    for x, t in [(50, "Description"), (330, "Qty"), (390, "Rate"), (480, "Amount")]:
+        c.drawString(x, y, t)
+    c.line(50, y - 4, w - 50, y - 4)
+    c.setFont("Helvetica", 10)
+    rows = [("Managed IT support, October 2026", 1, 1200.00),
+            ("Microsoft 365 Business licences", 15, 22.00),
+            ("Laptop repair (screen replacement)", 2, 185.00)]
+    y -= 20
+    for desc, qty, price in rows:
+        c.drawString(50, y, desc)
+        c.drawString(330, y, str(qty))
+        c.drawString(390, y, f"${price:,.2f}")
+        c.drawString(480, y, f"${qty * price:,.2f}")
+        y -= 16
+    subtotal = sum(q * p for _, q, p in rows)  # 1,900.00
+    tax = 30.53  # sales tax on the repair parts only, as printed
+    y -= 10
+    for label, value in [("Subtotal", subtotal), ("Sales tax", tax), ("Total due (USD)", subtotal + tax)]:
+        c.drawString(390, y, label)
+        c.drawString(480, y, f"${value:,.2f}")
+        y -= 16
+    c.save()
+
+
+def harborline_docx(path: Path) -> None:
+    """US supplier, Word invoice with a line-item table. For the QuickBooks demo."""
+    import docx
+
+    d = docx.Document()
+    d.add_heading("Harborline Print & Sign Co.", level=1)
+    d.add_paragraph("88 Wharf Street, Port Example, ZZ 00002")
+    d.add_paragraph("INVOICE HPS-2291")
+    d.add_paragraph("Invoice date: 2026-10-30    Payment due: 2026-11-14    Currency: USD")
+    d.add_paragraph("Customer: Example Clinic Group Inc.")
+    t = d.add_table(rows=1, cols=4)
+    t.style = "Table Grid"
+    for cell, text in zip(t.rows[0].cells, ["Item", "Qty", "Unit price", "Line total"]):
+        cell.text = text
+    for item, qty, unit, total in [("Vinyl window banner, 6ft x 2ft", "2", "145.00", "290.00"),
+                                   ("Business cards, 500 per box", "4", "38.50", "154.00"),
+                                   ("Design proof and setup", "1", "60.00", "60.00")]:
+        row = t.add_row().cells
+        row[0].text, row[1].text, row[2].text, row[3].text = item, qty, unit, total
+    d.add_paragraph("Subtotal: 504.00")
+    d.add_paragraph("Sales tax 7%: 35.28")
+    d.add_paragraph("Total due: USD 539.28")
+    d.save(path)
+
+
+def greenleaf_xlsx(path: Path) -> None:
+    """US supplier, spreadsheet invoice. One line maps to an account the company doesn't have."""
+    import openpyxl
+    from openpyxl.styles import Font
+
+    wb = openpyxl.Workbook()
+    ws = wb.active
+    ws.title = "Invoice"
+    ws["A1"] = "Greenleaf Janitorial Inc."
+    ws["A1"].font = Font(bold=True, size=14)
+    ws["A2"] = "250 Example Avenue, Testville, ZZ 00003"
+    rows = [
+        (), ("Invoice number", "GJ-7734"), ("Invoice date", "2026-10-31"), ("Due date", "2026-11-30"),
+        ("Currency", "USD"), ("Customer", "Example Clinic Group Inc."),
+        (), ("Item", "Qty", "Price", "Line total"),
+        ("Weekly office cleaning, October", 4, 175.0, 700.0),
+        ("Restroom supplies (soap, paper towels)", 1, 86.4, 86.4),
+        ("Floor buffing, reception", 1, 120.0, 120.0),
+        (), ("Subtotal", None, None, 906.4), ("Sales tax", None, None, 0.0), ("Total USD", None, None, 906.4),
+    ]
+    for r in rows:
+        ws.append(list(r))
+    wb.save(path)
+
+
 def main() -> None:
     INVOICES.mkdir(parents=True, exist_ok=True)
     FORMS.mkdir(parents=True, exist_ok=True)
@@ -253,6 +354,10 @@ def main() -> None:
     riverside_docx(SAMPLES / "permit_application_riverside.docx")
     credential_csv(SAMPLES / "staff_credential_export.csv")
     invoice_form(FORMS / "invoice_entry_form.pdf")
+    US.mkdir(parents=True, exist_ok=True)
+    summit_it_pdf(US / "summit_it_invoice.pdf")
+    harborline_docx(US / "harborline_print_invoice.docx")
+    greenleaf_xlsx(US / "greenleaf_janitorial_invoice.xlsx")
     print("samples written")
 
 

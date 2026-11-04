@@ -1,0 +1,3 @@
+held_at,file,supplier,invoice_number,total,reasons
+2026-11-04T05:20:53Z,kestrel_invoice_scanned.pdf,KESTREL MARINE SERVICES LLC,KMS-88317,5145.00,invoice_date: model marked it low confidence | due_date: model marked it low confidence
+2026-11-04T05:20:53Z,brightwater_invoice.pdf,Brightwater Office Supplies Ltd,BW-2026-0412,627.00,"currency: invoice is GBP, the company's home currency is USD and multicurrency bills are not handled"

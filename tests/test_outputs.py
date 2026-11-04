@@ -1,9 +1,9 @@
 import csv
 
 import openpyxl
+from conftest import FakeExtractor, answer, brightwater_answers
 from pypdf import PdfReader
 
-from conftest import FakeExtractor, answer, brightwater_answers
 from doc_extractor.extract import extract_file
 from doc_extractor.outputs import append_excel_row, fill_pdf_form, form_field_names, write_batch_csv
 from doc_extractor.schemas import load_schema

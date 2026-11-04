@@ -1,0 +1,12 @@
+summit_it_invoice.pdf: DUPLICATE, SKIPPED  Summit Ridge IT Services LLC #SR-10482  total 1,930.53
+  bill Id 145, vendor Id 58
+  ! Bill 145 already exists for Summit Ridge IT Services LLC with invoice number SR-10482; nothing created
+harborline_print_invoice.docx: DUPLICATE, SKIPPED  Harborline Print & Sign Co. #HPS-2291  total 539.28
+  bill Id 146, vendor Id 59
+  ! Bill 146 already exists for Harborline Print & Sign Co. with invoice number HPS-2291; nothing created
+greenleaf_janitorial_invoice.xlsx: DUPLICATE, SKIPPED  Greenleaf Janitorial Inc. #GJ-7734  total 906.40
+  bill Id 147, vendor Id 60
+  ! Bill 147 already exists for Greenleaf Janitorial Inc. with invoice number GJ-7734; nothing created
+
+3 duplicate
+token refreshed 1x; the new refresh token was saved to the keychain store

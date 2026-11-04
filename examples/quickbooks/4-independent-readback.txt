@@ -1,0 +1,20 @@
+Bill 145  Summit Ridge IT Services LLC   #SR-10482  2026-10-28 due 2026-11-27  TotalAmt  1930.53  Balance 1930.53
+     1200.00  Legal & Professional Fees  Managed IT support, October 2026
+      330.00  Dues & Subscriptions       Microsoft 365 Business licences
+      370.00  Maintenance and Repair:Computer Repairs Laptop repair (screen replacement)
+       30.53  Taxes & Licenses           Tax shown on the invoice
+    PrivateNote: [TEST RECORD, portfolio demo] Created by ai-document-extractor from summit_it_invoice.pdf.
+Bill 146  Harborline Print & Sign Co.    #HPS-2291  2026-10-30 due 2026-11-14  TotalAmt   539.28  Balance 539.28
+      290.00  Advertising                Vinyl window banner, 6ft x 2ft
+      154.00  Stationery & Printing      Business cards, 500 per box
+       60.00  Uncategorized Expense      Design proof and setup
+       35.28  Taxes & Licenses           Tax shown on the invoice
+    PrivateNote: [TEST RECORD, portfolio demo] Created by ai-document-extractor from harborline_print_invoice.docx.
+Bill 147  Greenleaf Janitorial Inc.      #GJ-7734   2026-10-31 due 2026-11-30  TotalAmt   906.40  Balance 906.40
+      700.00  Uncategorized Expense      Weekly office cleaning, October
+       86.40  Supplies                   Restroom supplies (soap, paper towels)
+      120.00  Uncategorized Expense      Floor buffing, reception
+    PrivateNote: [TEST RECORD, portfolio demo] Created by ai-document-extractor from greenleaf_janitorial_invoice.xlsx.
+SR-10482 bills with this number: 1
+HPS-2291 bills with this number: 1
+GJ-7734 bills with this number: 1

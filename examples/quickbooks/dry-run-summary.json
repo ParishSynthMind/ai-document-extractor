@@ -1,0 +1,364 @@
+[
+  {
+    "file": "summit_it_invoice.pdf",
+    "status": "dry-run",
+    "vendor": "Summit Ridge IT Services LLC",
+    "doc_number": "SR-10482",
+    "total": 1930.53,
+    "bill_id": null,
+    "vendor_id": null,
+    "vendor_created": false,
+    "reasons": [],
+    "notes": [],
+    "lines": [
+      {
+        "description": "Managed IT support, October 2026",
+        "amount": 1200.0,
+        "account": "Legal & Professional Fees",
+        "why": "rule 'managed it'"
+      },
+      {
+        "description": "Microsoft 365 Business licences",
+        "amount": 330.0,
+        "account": "Dues & Subscriptions",
+        "why": "rule '365'"
+      },
+      {
+        "description": "Laptop repair (screen replacement)",
+        "amount": 370.0,
+        "account": "Computer Repairs",
+        "why": "rule 'laptop repair'"
+      },
+      {
+        "description": "Tax shown on the invoice",
+        "amount": 30.53,
+        "account": "Taxes & Licenses",
+        "why": "tax line"
+      }
+    ],
+    "payload": {
+      "VendorRef": {
+        "name": "Summit Ridge IT Services LLC",
+        "value": "<found or created at push time>"
+      },
+      "TxnDate": "2026-10-28",
+      "DocNumber": "SR-10482",
+      "PrivateNote": "[TEST RECORD, portfolio demo] Created by ai-document-extractor from summit_it_invoice.pdf.",
+      "Line": [
+        {
+          "DetailType": "AccountBasedExpenseLineDetail",
+          "Amount": 1200.0,
+          "Description": "Managed IT support, October 2026",
+          "AccountBasedExpenseLineDetail": {
+            "AccountRef": {
+              "name": "Legal & Professional Fees",
+              "value": "<looked up at push time>"
+            }
+          }
+        },
+        {
+          "DetailType": "AccountBasedExpenseLineDetail",
+          "Amount": 330.0,
+          "Description": "Microsoft 365 Business licences",
+          "AccountBasedExpenseLineDetail": {
+            "AccountRef": {
+              "name": "Dues & Subscriptions",
+              "value": "<looked up at push time>"
+            }
+          }
+        },
+        {
+          "DetailType": "AccountBasedExpenseLineDetail",
+          "Amount": 370.0,
+          "Description": "Laptop repair (screen replacement)",
+          "AccountBasedExpenseLineDetail": {
+            "AccountRef": {
+              "name": "Computer Repairs",
+              "value": "<looked up at push time>"
+            }
+          }
+        },
+        {
+          "DetailType": "AccountBasedExpenseLineDetail",
+          "Amount": 30.53,
+          "Description": "Tax shown on the invoice",
+          "AccountBasedExpenseLineDetail": {
+            "AccountRef": {
+              "name": "Taxes & Licenses",
+              "value": "<looked up at push time>"
+            }
+          }
+        }
+      ],
+      "DueDate": "2026-11-27"
+    },
+    "readback": null,
+    "verified": null
+  },
+  {
+    "file": "harborline_print_invoice.docx",
+    "status": "dry-run",
+    "vendor": "Harborline Print & Sign Co.",
+    "doc_number": "HPS-2291",
+    "total": 539.28,
+    "bill_id": null,
+    "vendor_id": null,
+    "vendor_created": false,
+    "reasons": [],
+    "notes": [],
+    "lines": [
+      {
+        "description": "Vinyl window banner, 6ft x 2ft",
+        "amount": 290.0,
+        "account": "Advertising",
+        "why": "rule 'banner'"
+      },
+      {
+        "description": "Business cards, 500 per box",
+        "amount": 154.0,
+        "account": "Stationery & Printing",
+        "why": "rule 'business cards'"
+      },
+      {
+        "description": "Design proof and setup",
+        "amount": 60.0,
+        "account": "Uncategorized Expense",
+        "why": "no rule matched, default account"
+      },
+      {
+        "description": "Tax shown on the invoice",
+        "amount": 35.28,
+        "account": "Taxes & Licenses",
+        "why": "tax line"
+      }
+    ],
+    "payload": {
+      "VendorRef": {
+        "name": "Harborline Print & Sign Co.",
+        "value": "<found or created at push time>"
+      },
+      "TxnDate": "2026-10-30",
+      "DocNumber": "HPS-2291",
+      "PrivateNote": "[TEST RECORD, portfolio demo] Created by ai-document-extractor from harborline_print_invoice.docx.",
+      "Line": [
+        {
+          "DetailType": "AccountBasedExpenseLineDetail",
+          "Amount": 290.0,
+          "Description": "Vinyl window banner, 6ft x 2ft",
+          "AccountBasedExpenseLineDetail": {
+            "AccountRef": {
+              "name": "Advertising",
+              "value": "<looked up at push time>"
+            }
+          }
+        },
+        {
+          "DetailType": "AccountBasedExpenseLineDetail",
+          "Amount": 154.0,
+          "Description": "Business cards, 500 per box",
+          "AccountBasedExpenseLineDetail": {
+            "AccountRef": {
+              "name": "Stationery & Printing",
+              "value": "<looked up at push time>"
+            }
+          }
+        },
+        {
+          "DetailType": "AccountBasedExpenseLineDetail",
+          "Amount": 60.0,
+          "Description": "Design proof and setup",
+          "AccountBasedExpenseLineDetail": {
+            "AccountRef": {
+              "name": "Uncategorized Expense",
+              "value": "<looked up at push time>"
+            }
+          }
+        },
+        {
+          "DetailType": "AccountBasedExpenseLineDetail",
+          "Amount": 35.28,
+          "Description": "Tax shown on the invoice",
+          "AccountBasedExpenseLineDetail": {
+            "AccountRef": {
+              "name": "Taxes & Licenses",
+              "value": "<looked up at push time>"
+            }
+          }
+        }
+      ],
+      "DueDate": "2026-11-14"
+    },
+    "readback": null,
+    "verified": null
+  },
+  {
+    "file": "greenleaf_janitorial_invoice.xlsx",
+    "status": "dry-run",
+    "vendor": "Greenleaf Janitorial Inc.",
+    "doc_number": "GJ-7734",
+    "total": 906.4,
+    "bill_id": null,
+    "vendor_id": null,
+    "vendor_created": false,
+    "reasons": [],
+    "notes": [],
+    "lines": [
+      {
+        "description": "Weekly office cleaning, October",
+        "amount": 700.0,
+        "account": "Cleaning Services",
+        "why": "rule 'office cleaning'"
+      },
+      {
+        "description": "Restroom supplies (soap, paper towels)",
+        "amount": 86.4,
+        "account": "Supplies",
+        "why": "rule 'supplies'"
+      },
+      {
+        "description": "Floor buffing, reception",
+        "amount": 120.0,
+        "account": "Uncategorized Expense",
+        "why": "no rule matched, default account"
+      }
+    ],
+    "payload": {
+      "VendorRef": {
+        "name": "Greenleaf Janitorial Inc.",
+        "value": "<found or created at push time>"
+      },
+      "TxnDate": "2026-10-31",
+      "DocNumber": "GJ-7734",
+      "PrivateNote": "[TEST RECORD, portfolio demo] Created by ai-document-extractor from greenleaf_janitorial_invoice.xlsx.",
+      "Line": [
+        {
+          "DetailType": "AccountBasedExpenseLineDetail",
+          "Amount": 700.0,
+          "Description": "Weekly office cleaning, October",
+          "AccountBasedExpenseLineDetail": {
+            "AccountRef": {
+              "name": "Cleaning Services",
+              "value": "<looked up at push time>"
+            }
+          }
+        },
+        {
+          "DetailType": "AccountBasedExpenseLineDetail",
+          "Amount": 86.4,
+          "Description": "Restroom supplies (soap, paper towels)",
+          "AccountBasedExpenseLineDetail": {
+            "AccountRef": {
+              "name": "Supplies",
+              "value": "<looked up at push time>"
+            }
+          }
+        },
+        {
+          "DetailType": "AccountBasedExpenseLineDetail",
+          "Amount": 120.0,
+          "Description": "Floor buffing, reception",
+          "AccountBasedExpenseLineDetail": {
+            "AccountRef": {
+              "name": "Uncategorized Expense",
+              "value": "<looked up at push time>"
+            }
+          }
+        }
+      ],
+      "DueDate": "2026-11-30"
+    },
+    "readback": null,
+    "verified": null
+  },
+  {
+    "file": "kestrel_invoice_scanned.pdf",
+    "status": "held",
+    "vendor": "KESTREL MARINE SERVICES LLC",
+    "doc_number": "KMS-88317",
+    "total": 5145,
+    "bill_id": null,
+    "vendor_id": null,
+    "vendor_created": false,
+    "reasons": [
+      "invoice_date: model marked it low confidence",
+      "due_date: model marked it low confidence"
+    ],
+    "notes": [
+      "subtotal was medium confidence (4900)",
+      "tax_amount was medium confidence (245)",
+      "total_amount was medium confidence (5145)"
+    ],
+    "lines": [
+      {
+        "description": "Hull inspection, vessel 'Sandpiper'",
+        "amount": 1850.0,
+        "account": "Uncategorized Expense",
+        "why": "no rule matched, default account"
+      },
+      {
+        "description": "Anti-fouling paint, 2. coats",
+        "amount": 2400.0,
+        "account": "Uncategorized Expense",
+        "why": "no rule matched, default account"
+      },
+      {
+        "description": "Diver call-out. (weekend rate)",
+        "amount": 650.0,
+        "account": "Uncategorized Expense",
+        "why": "no rule matched, default account"
+      },
+      {
+        "description": "Tax shown on the invoice",
+        "amount": 245.0,
+        "account": "Taxes & Licenses",
+        "why": "tax line"
+      }
+    ],
+    "payload": null,
+    "readback": null,
+    "verified": null
+  },
+  {
+    "file": "brightwater_invoice.pdf",
+    "status": "held",
+    "vendor": "Brightwater Office Supplies Ltd",
+    "doc_number": "BW-2026-0412",
+    "total": 627,
+    "bill_id": null,
+    "vendor_id": null,
+    "vendor_created": false,
+    "reasons": [
+      "currency: invoice is GBP, the company's home currency is USD and multicurrency bills are not handled"
+    ],
+    "notes": [],
+    "lines": [
+      {
+        "description": "A4 copier paper, 80gsm (box of 5 reams)",
+        "amount": 258.0,
+        "account": "Stationery & Printing",
+        "why": "rule 'copier paper'"
+      },
+      {
+        "description": "Black toner cartridge TN-2420",
+        "amount": 192.0,
+        "account": "Stationery & Printing",
+        "why": "rule 'toner'"
+      },
+      {
+        "description": "Desk organiser, mesh",
+        "amount": 72.5,
+        "account": "Uncategorized Expense",
+        "why": "no rule matched, default account"
+      },
+      {
+        "description": "Tax shown on the invoice",
+        "amount": 104.5,
+        "account": "Taxes & Licenses",
+        "why": "tax line"
+      }
+    ],
+    "payload": null,
+    "readback": null,
+    "verified": null
+  }
+]

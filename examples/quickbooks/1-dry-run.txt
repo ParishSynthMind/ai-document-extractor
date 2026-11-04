@@ -1,0 +1,181 @@
+summit_it_invoice.pdf: DRY RUN (no API call)  Summit Ridge IT Services LLC #SR-10482  total 1,930.53
+      1,200.00  Legal & Professional Fees  Managed IT support, October 2026
+        330.00  Dues & Subscriptions       Microsoft 365 Business licences
+        370.00  Computer Repairs           Laptop repair (screen replacement)
+         30.53  Taxes & Licenses           Tax shown on the invoice
+{
+  "VendorRef": {
+    "name": "Summit Ridge IT Services LLC",
+    "value": "<found or created at push time>"
+  },
+  "TxnDate": "2026-10-28",
+  "DocNumber": "SR-10482",
+  "PrivateNote": "[TEST RECORD, portfolio demo] Created by ai-document-extractor from summit_it_invoice.pdf.",
+  "Line": [
+    {
+      "DetailType": "AccountBasedExpenseLineDetail",
+      "Amount": 1200.0,
+      "Description": "Managed IT support, October 2026",
+      "AccountBasedExpenseLineDetail": {
+        "AccountRef": {
+          "name": "Legal & Professional Fees",
+          "value": "<looked up at push time>"
+        }
+      }
+    },
+    {
+      "DetailType": "AccountBasedExpenseLineDetail",
+      "Amount": 330.0,
+      "Description": "Microsoft 365 Business licences",
+      "AccountBasedExpenseLineDetail": {
+        "AccountRef": {
+          "name": "Dues & Subscriptions",
+          "value": "<looked up at push time>"
+        }
+      }
+    },
+    {
+      "DetailType": "AccountBasedExpenseLineDetail",
+      "Amount": 370.0,
+      "Description": "Laptop repair (screen replacement)",
+      "AccountBasedExpenseLineDetail": {
+        "AccountRef": {
+          "name": "Computer Repairs",
+          "value": "<looked up at push time>"
+        }
+      }
+    },
+    {
+      "DetailType": "AccountBasedExpenseLineDetail",
+      "Amount": 30.53,
+      "Description": "Tax shown on the invoice",
+      "AccountBasedExpenseLineDetail": {
+        "AccountRef": {
+          "name": "Taxes & Licenses",
+          "value": "<looked up at push time>"
+        }
+      }
+    }
+  ],
+  "DueDate": "2026-11-27"
+}
+harborline_print_invoice.docx: DRY RUN (no API call)  Harborline Print & Sign Co. #HPS-2291  total 539.28
+        290.00  Advertising                Vinyl window banner, 6ft x 2ft
+        154.00  Stationery & Printing      Business cards, 500 per box
+         60.00  Uncategorized Expense      Design proof and setup
+         35.28  Taxes & Licenses           Tax shown on the invoice
+{
+  "VendorRef": {
+    "name": "Harborline Print & Sign Co.",
+    "value": "<found or created at push time>"
+  },
+  "TxnDate": "2026-10-30",
+  "DocNumber": "HPS-2291",
+  "PrivateNote": "[TEST RECORD, portfolio demo] Created by ai-document-extractor from harborline_print_invoice.docx.",
+  "Line": [
+    {
+      "DetailType": "AccountBasedExpenseLineDetail",
+      "Amount": 290.0,
+      "Description": "Vinyl window banner, 6ft x 2ft",
+      "AccountBasedExpenseLineDetail": {
+        "AccountRef": {
+          "name": "Advertising",
+          "value": "<looked up at push time>"
+        }
+      }
+    },
+    {
+      "DetailType": "AccountBasedExpenseLineDetail",
+      "Amount": 154.0,
+      "Description": "Business cards, 500 per box",
+      "AccountBasedExpenseLineDetail": {
+        "AccountRef": {
+          "name": "Stationery & Printing",
+          "value": "<looked up at push time>"
+        }
+      }
+    },
+    {
+      "DetailType": "AccountBasedExpenseLineDetail",
+      "Amount": 60.0,
+      "Description": "Design proof and setup",
+      "AccountBasedExpenseLineDetail": {
+        "AccountRef": {
+          "name": "Uncategorized Expense",
+          "value": "<looked up at push time>"
+        }
+      }
+    },
+    {
+      "DetailType": "AccountBasedExpenseLineDetail",
+      "Amount": 35.28,
+      "Description": "Tax shown on the invoice",
+      "AccountBasedExpenseLineDetail": {
+        "AccountRef": {
+          "name": "Taxes & Licenses",
+          "value": "<looked up at push time>"
+        }
+      }
+    }
+  ],
+  "DueDate": "2026-11-14"
+}
+greenleaf_janitorial_invoice.xlsx: DRY RUN (no API call)  Greenleaf Janitorial Inc. #GJ-7734  total 906.40
+        700.00  Cleaning Services          Weekly office cleaning, October
+         86.40  Supplies                   Restroom supplies (soap, paper towels)
+        120.00  Uncategorized Expense      Floor buffing, reception
+{
+  "VendorRef": {
+    "name": "Greenleaf Janitorial Inc.",
+    "value": "<found or created at push time>"
+  },
+  "TxnDate": "2026-10-31",
+  "DocNumber": "GJ-7734",
+  "PrivateNote": "[TEST RECORD, portfolio demo] Created by ai-document-extractor from greenleaf_janitorial_invoice.xlsx.",
+  "Line": [
+    {
+      "DetailType": "AccountBasedExpenseLineDetail",
+      "Amount": 700.0,
+      "Description": "Weekly office cleaning, October",
+      "AccountBasedExpenseLineDetail": {
+        "AccountRef": {
+          "name": "Cleaning Services",
+          "value": "<looked up at push time>"
+        }
+      }
+    },
+    {
+      "DetailType": "AccountBasedExpenseLineDetail",
+      "Amount": 86.4,
+      "Description": "Restroom supplies (soap, paper towels)",
+      "AccountBasedExpenseLineDetail": {
+        "AccountRef": {
+          "name": "Supplies",
+          "value": "<looked up at push time>"
+        }
+      }
+    },
+    {
+      "DetailType": "AccountBasedExpenseLineDetail",
+      "Amount": 120.0,
+      "Description": "Floor buffing, reception",
+      "AccountBasedExpenseLineDetail": {
+        "AccountRef": {
+          "name": "Uncategorized Expense",
+          "value": "<looked up at push time>"
+        }
+      }
+    }
+  ],
+  "DueDate": "2026-11-30"
+}
+kestrel_invoice_scanned.pdf: HELD FOR REVIEW  KESTREL MARINE SERVICES LLC #KMS-88317  total 5,145.00
+  ! invoice_date: model marked it low confidence
+  ! due_date: model marked it low confidence
+  - subtotal was medium confidence (4900)
+  - tax_amount was medium confidence (245)
+  - total_amount was medium confidence (5145)
+brightwater_invoice.pdf: HELD FOR REVIEW  Brightwater Office Supplies Ltd #BW-2026-0412  total 627.00
+  ! currency: invoice is GBP, the company's home currency is USD and multicurrency bills are not handled
+
+2 held, 3 dry-run

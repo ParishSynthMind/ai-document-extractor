@@ -1,0 +1,107 @@
+{
+  "extraction": {
+    "file": "summit_it_invoice.pdf",
+    "schema": "invoice",
+    "method": "pdf-text",
+    "pages": 1,
+    "fields": {
+      "supplier_name": {
+        "value": "Summit Ridge IT Services LLC",
+        "confidence": "high",
+        "source_snippet": "Summit Ridge IT Services LLC",
+        "checks": []
+      },
+      "invoice_number": {
+        "value": "SR-10482",
+        "confidence": "high",
+        "source_snippet": "Invoice No: SR-10482",
+        "checks": []
+      },
+      "invoice_date": {
+        "value": "2026-10-28",
+        "confidence": "high",
+        "source_snippet": "Invoice Date: October 28, 2026",
+        "checks": []
+      },
+      "due_date": {
+        "value": "2026-11-27",
+        "confidence": "high",
+        "source_snippet": "Due Date: November 27, 2026",
+        "checks": []
+      },
+      "purchase_order": {
+        "value": null,
+        "confidence": "high",
+        "source_snippet": "",
+        "checks": []
+      },
+      "currency": {
+        "value": "USD",
+        "confidence": "high",
+        "source_snippet": "Total due (USD) $1,930.53",
+        "checks": []
+      },
+      "subtotal": {
+        "value": 1900,
+        "confidence": "high",
+        "source_snippet": "Subtotal $1,900.00",
+        "checks": []
+      },
+      "tax_amount": {
+        "value": 30.53,
+        "confidence": "high",
+        "source_snippet": "Sales tax $30.53",
+        "checks": []
+      },
+      "total_amount": {
+        "value": 1930.53,
+        "confidence": "high",
+        "source_snippet": "Total due (USD) $1,930.53",
+        "checks": []
+      },
+      "supplier_vat_number": {
+        "value": "00-0000000",
+        "confidence": "medium",
+        "source_snippet": "EIN 00-0000000",
+        "checks": []
+      },
+      "bank_iban": {
+        "value": null,
+        "confidence": "high",
+        "source_snippet": "",
+        "checks": []
+      }
+    },
+    "needs_review": [],
+    "extracted_at": "2026-11-04T05:20:03Z"
+  },
+  "line_items": [
+    {
+      "description": "Managed IT support, October 2026",
+      "amount": 1200,
+      "quantity": 1,
+      "unit_price": 1200,
+      "confidence": "high",
+      "source_snippet": "Managed IT support, October 2026 1 $1,200.00 $1,200.00",
+      "checks": []
+    },
+    {
+      "description": "Microsoft 365 Business licences",
+      "amount": 330,
+      "quantity": 15,
+      "unit_price": 22,
+      "confidence": "high",
+      "source_snippet": "Microsoft 365 Business licences 15 $22.00 $330.00",
+      "checks": []
+    },
+    {
+      "description": "Laptop repair (screen replacement)",
+      "amount": 370,
+      "quantity": 2,
+      "unit_price": 185,
+      "confidence": "high",
+      "source_snippet": "Laptop repair (screen replacement) 2 $185.00 $370.00",
+      "checks": []
+    }
+  ]
+}

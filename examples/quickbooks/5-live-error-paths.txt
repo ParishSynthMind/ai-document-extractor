@@ -1,0 +1,8 @@
+1) normal call OK, refreshes so far: 1
+2) bad access token -> QuickBooks said 401 -> refreshed and retried -> OK (home currency USD), refreshes now: 2
+3) bill with an account id that doesn't exist was refused, readable error:
+   QuickBooks rejected the request (HTTP 400):
+     - Invalid Reference Id: Invalid Reference Id : Accounts element id 999999 not found [code 2500]
+4) created throwaway Bill 148 to test clean-up
+deleted Bill 148 (DELETE-ME)
+5) bills numbered DELETE-ME left after delete: 0

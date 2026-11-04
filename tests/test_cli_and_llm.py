@@ -3,8 +3,8 @@ import json
 from types import SimpleNamespace
 
 import pytest
-
 from conftest import FakeExtractor, answer, brightwater_answers
+
 from doc_extractor.cli import main
 from doc_extractor.llm import DEFAULT_MODEL, AnthropicExtractor
 from doc_extractor.schemas import load_schema

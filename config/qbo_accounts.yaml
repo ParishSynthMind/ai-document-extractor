@@ -1,0 +1,15 @@
+# Which QuickBooks expense account each invoice line goes to.
+# Rules are checked in order against the line's description (case-insensitive,
+# any keyword matches). The first match wins. A line no rule matches, or a rule
+# whose account doesn't exist in the company, goes to default_account, and the
+# run summary says so. Account names must match the company's chart of accounts.
+default_account: Uncategorized Expense
+tax_account: Taxes & Licenses
+rules:
+  - {account: Dues & Subscriptions, keywords: [licence, license, subscription, saas, "365"]}
+  - {account: Computer Repairs, keywords: [laptop repair, hardware repair, screen replacement]}
+  - {account: Legal & Professional Fees, keywords: [managed it, it support, consulting, consultancy, advisory]}
+  - {account: Stationery & Printing, keywords: [business cards, letterhead, printing, print run, copier paper, toner]}
+  - {account: Advertising, keywords: [banner, signage, sign, flyer, poster]}
+  - {account: Cleaning Services, keywords: [office cleaning, deep clean]}
+  - {account: Supplies, keywords: [supplies, consumables, soap, paper towels]}

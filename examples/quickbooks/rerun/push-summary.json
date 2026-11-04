@@ -1,0 +1,125 @@
+[
+  {
+    "file": "summit_it_invoice.pdf",
+    "status": "duplicate",
+    "vendor": "Summit Ridge IT Services LLC",
+    "doc_number": "SR-10482",
+    "total": 1930.53,
+    "bill_id": "145",
+    "vendor_id": "58",
+    "vendor_created": false,
+    "reasons": [
+      "Bill 145 already exists for Summit Ridge IT Services LLC with invoice number SR-10482; nothing created"
+    ],
+    "notes": [],
+    "lines": [
+      {
+        "description": "Managed IT support, October 2026",
+        "amount": 1200.0,
+        "account": "Legal & Professional Fees",
+        "why": "rule 'managed it'"
+      },
+      {
+        "description": "Microsoft 365 Business licences",
+        "amount": 330.0,
+        "account": "Dues & Subscriptions",
+        "why": "rule '365'"
+      },
+      {
+        "description": "Laptop repair (screen replacement)",
+        "amount": 370.0,
+        "account": "Computer Repairs",
+        "why": "rule 'laptop repair'"
+      },
+      {
+        "description": "Tax shown on the invoice",
+        "amount": 30.53,
+        "account": "Taxes & Licenses",
+        "why": "tax line"
+      }
+    ],
+    "payload": null,
+    "readback": null,
+    "verified": null
+  },
+  {
+    "file": "harborline_print_invoice.docx",
+    "status": "duplicate",
+    "vendor": "Harborline Print & Sign Co.",
+    "doc_number": "HPS-2291",
+    "total": 539.28,
+    "bill_id": "146",
+    "vendor_id": "59",
+    "vendor_created": false,
+    "reasons": [
+      "Bill 146 already exists for Harborline Print & Sign Co. with invoice number HPS-2291; nothing created"
+    ],
+    "notes": [],
+    "lines": [
+      {
+        "description": "Vinyl window banner, 6ft x 2ft",
+        "amount": 290.0,
+        "account": "Advertising",
+        "why": "rule 'banner'"
+      },
+      {
+        "description": "Business cards, 500 per box",
+        "amount": 154.0,
+        "account": "Stationery & Printing",
+        "why": "rule 'business cards'"
+      },
+      {
+        "description": "Design proof and setup",
+        "amount": 60.0,
+        "account": "Uncategorized Expense",
+        "why": "no rule matched, default account"
+      },
+      {
+        "description": "Tax shown on the invoice",
+        "amount": 35.28,
+        "account": "Taxes & Licenses",
+        "why": "tax line"
+      }
+    ],
+    "payload": null,
+    "readback": null,
+    "verified": null
+  },
+  {
+    "file": "greenleaf_janitorial_invoice.xlsx",
+    "status": "duplicate",
+    "vendor": "Greenleaf Janitorial Inc.",
+    "doc_number": "GJ-7734",
+    "total": 906.4,
+    "bill_id": "147",
+    "vendor_id": "60",
+    "vendor_created": false,
+    "reasons": [
+      "Bill 147 already exists for Greenleaf Janitorial Inc. with invoice number GJ-7734; nothing created"
+    ],
+    "notes": [],
+    "lines": [
+      {
+        "description": "Weekly office cleaning, October",
+        "amount": 700.0,
+        "account": "Cleaning Services",
+        "why": "rule 'office cleaning'"
+      },
+      {
+        "description": "Restroom supplies (soap, paper towels)",
+        "amount": 86.4,
+        "account": "Supplies",
+        "why": "rule 'supplies'"
+      },
+      {
+        "description": "Floor buffing, reception",
+        "amount": 120.0,
+        "account": "Uncategorized Expense",
+        "why": "no rule matched, default account"
+      }
+    ],
+    "payload": null,
+    "readback": null,
+    "verified": null
+  }
+]
