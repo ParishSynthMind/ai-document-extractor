@@ -1,0 +1,314 @@
+[
+  {
+    "file": "brightwater_invoice.pdf",
+    "status": "held",
+    "contact": "Brightwater Office Supplies Ltd",
+    "invoice_number": "BW-2026-0412",
+    "total": 627,
+    "invoice_id": null,
+    "contact_id": null,
+    "contact_created": false,
+    "reasons": [
+      "currency: invoice is GBP, the organisation's base currency is USD and foreign-currency bills are not handled"
+    ],
+    "notes": [],
+    "lines": [
+      {
+        "description": "A4 copier paper, 80gsm (box of 5 reams)",
+        "amount": 258.0,
+        "quantity": 12.0,
+        "unit_amount": 21.5,
+        "code": "461",
+        "account": "Printing & Stationery",
+        "why": "rule 'copier paper'",
+        "is_tax": false
+      },
+      {
+        "description": "Black toner cartridge TN-2420",
+        "amount": 192.0,
+        "quantity": 4.0,
+        "unit_amount": 48.0,
+        "code": "461",
+        "account": "Printing & Stationery",
+        "why": "rule 'toner'",
+        "is_tax": false
+      },
+      {
+        "description": "Desk organiser, mesh",
+        "amount": 72.5,
+        "quantity": 10.0,
+        "unit_amount": 7.25,
+        "code": "429",
+        "account": "General Expenses",
+        "why": "no rule matched, default account",
+        "is_tax": false
+      },
+      {
+        "description": "Tax shown on the invoice",
+        "amount": 104.5,
+        "quantity": 1.0,
+        "unit_amount": 104.5,
+        "code": "429",
+        "account": "General Expenses",
+        "why": "tax line",
+        "is_tax": true
+      }
+    ],
+    "payload": null,
+    "readback": null,
+    "verified": null
+  },
+  {
+    "file": "greenleaf_janitorial_invoice.xlsx",
+    "status": "duplicate",
+    "contact": "Greenleaf Janitorial Inc.",
+    "invoice_number": "GJ-7734",
+    "total": 906.4,
+    "invoice_id": "b34cc69d-71ba-49d0-a215-cc9eff5ad97b",
+    "contact_id": "cd98169c-08e9-4596-a406-f5115224a8ea",
+    "contact_created": false,
+    "reasons": [
+      "bill b34cc69d-71ba-49d0-a215-cc9eff5ad97b (DRAFT) already exists for Greenleaf Janitorial Inc. with invoice number GJ-7734; nothing created"
+    ],
+    "notes": [],
+    "lines": [
+      {
+        "description": "Weekly office cleaning, October",
+        "amount": 700.0,
+        "quantity": 4.0,
+        "unit_amount": 175.0,
+        "code": "408",
+        "account": "Cleaning",
+        "why": "rule 'office cleaning'",
+        "is_tax": false,
+        "code_used": "408",
+        "account_used": "Cleaning"
+      },
+      {
+        "description": "Restroom supplies (soap, paper towels)",
+        "amount": 86.4,
+        "quantity": 1.0,
+        "unit_amount": 86.4,
+        "code": "453",
+        "account": "Office Expenses",
+        "why": "rule 'supplies'",
+        "is_tax": false,
+        "code_used": "453",
+        "account_used": "Office Expenses"
+      },
+      {
+        "description": "Floor buffing, reception",
+        "amount": 120.0,
+        "quantity": 1.0,
+        "unit_amount": 120.0,
+        "code": "429",
+        "account": "General Expenses",
+        "why": "no rule matched, default account",
+        "is_tax": false,
+        "code_used": "429",
+        "account_used": "General Expenses"
+      }
+    ],
+    "payload": null,
+    "readback": null,
+    "verified": null
+  },
+  {
+    "file": "harborline_print_invoice.docx",
+    "status": "duplicate",
+    "contact": "Harborline Print & Sign Co.",
+    "invoice_number": "HPS-2291",
+    "total": 539.28,
+    "invoice_id": "19678229-463d-4cf0-bef7-0e7abe33f9dd",
+    "contact_id": "97140091-937b-41f5-80c7-72e4ad13d4c9",
+    "contact_created": false,
+    "reasons": [
+      "bill 19678229-463d-4cf0-bef7-0e7abe33f9dd (DRAFT) already exists for Harborline Print & Sign Co. with invoice number HPS-2291; nothing created"
+    ],
+    "notes": [],
+    "lines": [
+      {
+        "description": "Vinyl window banner, 6ft x 2ft",
+        "amount": 290.0,
+        "quantity": 2.0,
+        "unit_amount": 145.0,
+        "code": "400",
+        "account": "Advertising",
+        "why": "rule 'banner'",
+        "is_tax": false,
+        "code_used": "400",
+        "account_used": "Advertising"
+      },
+      {
+        "description": "Business cards, 500 per box",
+        "amount": 154.0,
+        "quantity": 4.0,
+        "unit_amount": 38.5,
+        "code": "461",
+        "account": "Printing & Stationery",
+        "why": "rule 'business cards'",
+        "is_tax": false,
+        "code_used": "461",
+        "account_used": "Printing & Stationery"
+      },
+      {
+        "description": "Design proof and setup",
+        "amount": 60.0,
+        "quantity": 1.0,
+        "unit_amount": 60.0,
+        "code": "429",
+        "account": "General Expenses",
+        "why": "no rule matched, default account",
+        "is_tax": false,
+        "code_used": "429",
+        "account_used": "General Expenses"
+      },
+      {
+        "description": "Tax shown on the invoice",
+        "amount": 35.28,
+        "quantity": 1.0,
+        "unit_amount": 35.28,
+        "code": "429",
+        "account": "General Expenses",
+        "why": "tax line",
+        "is_tax": true,
+        "code_used": "429",
+        "account_used": "General Expenses"
+      }
+    ],
+    "payload": null,
+    "readback": null,
+    "verified": null
+  },
+  {
+    "file": "kestrel_invoice_scanned.pdf",
+    "status": "held",
+    "contact": "KESTREL MARINE SERVICES LLC",
+    "invoice_number": "KMS-88317",
+    "total": 5145,
+    "invoice_id": null,
+    "contact_id": null,
+    "contact_created": false,
+    "reasons": [
+      "invoice_date: model marked it low confidence",
+      "due_date: model marked it low confidence"
+    ],
+    "notes": [
+      "subtotal was medium confidence (4900)",
+      "tax_amount was medium confidence (245)",
+      "total_amount was medium confidence (5145)"
+    ],
+    "lines": [
+      {
+        "description": "Hull inspection, vessel 'Sandpiper'",
+        "amount": 1850.0,
+        "quantity": 1.0,
+        "unit_amount": 1850.0,
+        "code": "429",
+        "account": "General Expenses",
+        "why": "no rule matched, default account",
+        "is_tax": false
+      },
+      {
+        "description": "Anti-fouling paint, 2. coats",
+        "amount": 2400.0,
+        "quantity": 1.0,
+        "unit_amount": 2400.0,
+        "code": "429",
+        "account": "General Expenses",
+        "why": "no rule matched, default account",
+        "is_tax": false
+      },
+      {
+        "description": "Diver call-out. (weekend rate)",
+        "amount": 650.0,
+        "quantity": 1.0,
+        "unit_amount": 650.0,
+        "code": "429",
+        "account": "General Expenses",
+        "why": "no rule matched, default account",
+        "is_tax": false
+      },
+      {
+        "description": "Tax shown on the invoice",
+        "amount": 245.0,
+        "quantity": 1.0,
+        "unit_amount": 245.0,
+        "code": "429",
+        "account": "General Expenses",
+        "why": "tax line",
+        "is_tax": true
+      }
+    ],
+    "payload": null,
+    "readback": null,
+    "verified": null
+  },
+  {
+    "file": "summit_it_invoice.pdf",
+    "status": "duplicate",
+    "contact": "Summit Ridge IT Services LLC",
+    "invoice_number": "SR-10482",
+    "total": 1930.53,
+    "invoice_id": "cd48d1ab-28ef-4380-a4c2-0aed862d9741",
+    "contact_id": "a1fbb8cf-ae6c-4c71-aed0-1fc8609f9e14",
+    "contact_created": false,
+    "reasons": [
+      "bill cd48d1ab-28ef-4380-a4c2-0aed862d9741 (DRAFT) already exists for Summit Ridge IT Services LLC with invoice number SR-10482; nothing created"
+    ],
+    "notes": [],
+    "lines": [
+      {
+        "description": "Managed IT support, October 2026",
+        "amount": 1200.0,
+        "quantity": 1.0,
+        "unit_amount": 1200.0,
+        "code": "412",
+        "account": "Consulting & Accounting",
+        "why": "rule 'managed it'",
+        "is_tax": false,
+        "code_used": "412",
+        "account_used": "Consulting & Accounting"
+      },
+      {
+        "description": "Microsoft 365 Business licences",
+        "amount": 330.0,
+        "quantity": 15.0,
+        "unit_amount": 22.0,
+        "code": "485",
+        "account": "Subscriptions",
+        "why": "rule '365'",
+        "is_tax": false,
+        "code_used": "485",
+        "account_used": "Subscriptions"
+      },
+      {
+        "description": "Laptop repair (screen replacement)",
+        "amount": 370.0,
+        "quantity": 2.0,
+        "unit_amount": 185.0,
+        "code": "473",
+        "account": "Repairs and Maintenance",
+        "why": "rule 'laptop repair'",
+        "is_tax": false,
+        "code_used": "473",
+        "account_used": "Repairs and Maintenance"
+      },
+      {
+        "description": "Tax shown on the invoice",
+        "amount": 30.53,
+        "quantity": 1.0,
+        "unit_amount": 30.53,
+        "code": "429",
+        "account": "General Expenses",
+        "why": "tax line",
+        "is_tax": true,
+        "code_used": "429",
+        "account_used": "General Expenses"
+      }
+    ],
+    "payload": null,
+    "readback": null,
+    "verified": null
+  }
+]

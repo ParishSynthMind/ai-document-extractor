@@ -1,0 +1,43 @@
+$ xero-push --show-setup --store keychain
+Organisation: Demo Company (Global)  base currency USD  country CA  demo company: True
+
+Active expense accounts (code, name):
+  300    Purchases  [DIRECTCOSTS]
+  310    Cost of Goods Sold  [DIRECTCOSTS]
+  400    Advertising  [EXPENSE]
+  404    Bank Fees  [EXPENSE]
+  408    Cleaning  [EXPENSE]
+  412    Consulting & Accounting  [EXPENSE]
+  416    Depreciation  [EXPENSE]
+  420    Entertainment  [EXPENSE]
+  425    Freight & Courier  [EXPENSE]
+  429    General Expenses  [EXPENSE]
+  433    Insurance  [EXPENSE]
+  437    Interest Expense  [EXPENSE]
+  441    Legal expenses  [EXPENSE]
+  445    Light, Power, Heating  [EXPENSE]
+  449    Motor Vehicle Expenses  [EXPENSE]
+  453    Office Expenses  [EXPENSE]
+  461    Printing & Stationery  [EXPENSE]
+  469    Rent  [EXPENSE]
+  473    Repairs and Maintenance  [EXPENSE]
+  477    Wages and Salaries  [EXPENSE]
+  478    Superannuation  [EXPENSE]
+  485    Subscriptions  [EXPENSE]
+  489    Telephone & Internet  [EXPENSE]
+  493    Travel - National  [EXPENSE]
+  494    Travel - International  [EXPENSE]
+  497    Bank Revaluations  [EXPENSE]
+  498    Unrealised Currency Gains  [EXPENSE]
+  499    Realised Currency Gains  [EXPENSE]
+  505    Income Tax Expense  [EXPENSE]
+
+Active tax rates (tax type, rate, name):
+  CAN030           0.00%  Exempt Sales
+  CAN029          12.00%  MB - GST/RST on Purchases
+  CAN028          12.00%  MB - GST/RST on Sales
+  GSTONIMPORTS     0.00%  Sales Tax on Imports
+  NONE             0.00%  Tax Exempt
+  OUTPUT           8.25%  Tax on Consulting
+  TAX001           8.75%  Tax on Goods
+  INPUT            8.25%  Tax on Purchases

@@ -1,0 +1,22 @@
+$ xero-push examples/quickbooks/*.qbo-input.json --out-dir xero-results --store keychain --label "[TEST RECORD, portfolio demo]"
+brightwater_invoice.pdf: HELD FOR REVIEW  Brightwater Office Supplies Ltd #BW-2026-0412  total 627.00
+  ! currency: invoice is GBP, the organisation's base currency is USD and foreign-currency bills are not handled
+greenleaf_janitorial_invoice.xlsx: DUPLICATE, SKIPPED  Greenleaf Janitorial Inc. #GJ-7734  total 906.40
+  bill b34cc69d-71ba-49d0-a215-cc9eff5ad97b
+  ! bill b34cc69d-71ba-49d0-a215-cc9eff5ad97b (DRAFT) already exists for Greenleaf Janitorial Inc. with invoice number GJ-7734; nothing created
+harborline_print_invoice.docx: DUPLICATE, SKIPPED  Harborline Print & Sign Co. #HPS-2291  total 539.28
+  bill 19678229-463d-4cf0-bef7-0e7abe33f9dd
+  ! bill 19678229-463d-4cf0-bef7-0e7abe33f9dd (DRAFT) already exists for Harborline Print & Sign Co. with invoice number HPS-2291; nothing created
+kestrel_invoice_scanned.pdf: HELD FOR REVIEW  KESTREL MARINE SERVICES LLC #KMS-88317  total 5,145.00
+  ! invoice_date: model marked it low confidence
+  ! due_date: model marked it low confidence
+  - subtotal was medium confidence (4900)
+  - tax_amount was medium confidence (245)
+  - total_amount was medium confidence (5145)
+summit_it_invoice.pdf: DUPLICATE, SKIPPED  Summit Ridge IT Services LLC #SR-10482  total 1,930.53
+  bill cd48d1ab-28ef-4380-a4c2-0aed862d9741
+  ! bill cd48d1ab-28ef-4380-a4c2-0aed862d9741 (DRAFT) already exists for Summit Ridge IT Services LLC with invoice number SR-10482; nothing created
+
+3 duplicate, 2 held
+token refreshed 1x; the new refresh token was saved to the keychain store
+calls left: DayLimit 989, MinLimit 49, AppMinLimit 9989

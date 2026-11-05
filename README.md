@@ -205,9 +205,9 @@ Also checked live against the sandbox: a deliberately bad access token got a rea
 
 The same checked invoice output, sent to **Xero** instead: each invoice becomes a **draft bill** (in Xero's API, an `Invoice` of `Type: ACCPAY`) through the Accounting API 2.0. Built because clients asked for exactly this with Xero by name. It follows the QuickBooks add-on's design step for step, adjusted to how Xero really works.
 
-![Real dry run: five saved invoice extractions turned into Xero bill payloads, one held for review](media/xero-dry-run.png)
+![Three draft bills read back from Xero's Demo Company after a live push](media/xero-bill-readback.png)
 
-*Real dry run, 5 November 2026, on the five invoice extractions saved by the QuickBooks live run (so no new Claude calls). A dry run makes no Xero call. The rough scan is held because its dates are ambiguous.*
+*Real run, 5 November 2026, against Xero's Demo Company (a free practice organisation every Xero account gets): three invented supplier invoices became these draft bills. Every value shown was read back from the Xero API by bill id, not taken from what was sent.*
 
 ### What it does, in order
 
@@ -252,20 +252,37 @@ xero-push xero-results/*.xero-input.json --out-dir xero-results --store keychain
 xero-push --delete-bill <InvoiceID> --store keychain
 ```
 
-### Tested on 5 November 2026: not yet live against Xero
+### Tested live on 5 November 2026 against Xero's Demo Company
 
-- **Real dry run** on five saved invoice extractions (output in [`examples/xero/`](examples/xero/)): four bill payloads built, the rough scan held for its ambiguous dates.
-- **55 tests against a fake Xero** over HTTP, built to the request and reply shapes in Xero's documentation (token endpoint, `/connections`, `Organisation`, `Accounts`, `TaxRates`, `Contacts`, `Invoices`, `History`, the 400 `ValidationException` body, 401, 403 and 429 with `Retry-After` and `X-Rate-Limit-Problem`). The connect flow is tested end to end on a real localhost socket. While writing them, the tests caught a real bug: a line of 3 x 3.3333 would have posted as 9.99 instead of 10.00, because Xero keeps 2 decimals on the unit price; such lines are now posted as 1 x the line amount.
+Proven on Xero's **Demo Company (Global)**, base currency USD, not on a production organisation. The same five saved invoice extractions as the QuickBooks run were pushed (no new Claude calls), every test bill labelled `[TEST RECORD, portfolio demo]` in its history note. Output is in [`examples/xero/live-run/`](examples/xero/live-run/).
 
-![The Xero tests passing](media/xero-tests.png)
+| Invoice | Result |
+|---|---|
+| `summit_it_invoice.pdf` (USD) | **Draft bill created**, contact created, total 1,930.53, read back OK |
+| `harborline_print_invoice.docx` (USD) | **Draft bill created**, contact created, total 539.28, read back OK |
+| `greenleaf_janitorial_invoice.xlsx` (USD) | **Draft bill created**, contact created, total 906.40, read back OK |
+| `brightwater_invoice.pdf` (GBP) | **Held**: invoice is GBP, the organisation is USD, so foreign currency is held |
+| `kestrel_invoice_scanned.pdf` (rough scan) | **Held**: invoice and due dates low confidence |
+| The three created ones, run again | **All three skipped as duplicates**, nothing new created |
+
+![The live re-run: three duplicates skipped, two held, token refreshed and saved](media/xero-live-rerun.png)
+
+Also checked live against the Demo Company:
+
+- **Token refresh:** a deliberately bad access token got a real 401; the client refreshed, saved the rotated refresh token and retried successfully.
+- **Bad input:** a bill in currency `ZZZ` got a real 400, shown as `Organisation is not subscribed to currency ZZZ`. Nothing was created.
+- **Delete:** `--delete-bill` removed a throwaway draft (status `DELETED`).
+- **A finding worth knowing:** Xero does **not** reject an invalid `AccountCode` on a **draft** bill. It returns no 400 and silently stores the line with no account. So the tool's own check of every code against the organisation's chart of accounts (and of `default_account`, which stops the run if it isn't a real expense account) is what protects you here, not Xero. The stray draft from this probe was deleted.
+
+Before the live run: **55 tests against a fake Xero** over HTTP, built to the request and reply shapes in Xero's documentation (token endpoint, `/connections`, `Organisation`, `Accounts`, `TaxRates`, `Contacts`, `Invoices`, `History`, the 400 `ValidationException` body, 401, 403 and 429 with `Retry-After` and `X-Rate-Limit-Problem`), plus a real dry run ([`examples/xero/`](examples/xero/)). The connect flow is tested end to end on a real localhost socket. The tests caught a real bug: a line of 3 x 3.3333 would have posted as 9.99 instead of 10.00, because Xero keeps 2 decimals on the unit price; such lines are now posted as 1 x the line amount.
 
 ### What is NOT proven
 
-- **A live Xero organisation.** Nothing here has been sent to real Xero yet. The next step is a run against Xero's free Demo Company: connect, show setup, push the samples, re-run to hit the duplicate guard, delete a test draft. This section will be updated with that run.
-- **Xero's exact wording** of errors and warnings in a real run. The fake uses the shapes from the docs, not captured replies.
-- **The default account codes.** They are Xero's standard chart (429 General Expenses and so on). A real organisation may differ; `--show-setup` lists its real codes, and unknown codes fall back to the default with a note.
+- **A production Xero organisation.** Only the Demo Company. A real organisation's chart of accounts and tax rates will need their own `xero_accounts.yaml`; `--show-setup` lists them.
+- **The default account codes.** They are Xero's standard chart (429 General Expenses and so on), which the Demo Company uses. A real organisation may differ; unknown codes fall back to the default with a note.
+- **The `invalid_grant` path live.** Tested with a mocked reply only.
 - **Multicurrency.** Foreign-currency invoices are held, not posted.
-- **US automatic sales tax** organisations (Xero calculates tax itself there and those invoices are read-only for tax fields). Not tried.
+- **`tax_type` mode live.** The live run used the default `line` mode. US automatic sales tax organisations were not tried.
 - **Attaching the PDF to the bill**, approving, or paying it. Not built.
 - **A certified Xero app.** New Xero apps start on the starter tier: up to 5 connected organisations and 1,000 API calls per organisation per day. Selling this widely needs a higher tier, and the Xero App Store needs certification.
 

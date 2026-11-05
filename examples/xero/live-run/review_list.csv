@@ -1,0 +1,3 @@
+held_at,file,supplier,invoice_number,total,reasons
+2026-11-05T17:32:01Z,brightwater_invoice.pdf,Brightwater Office Supplies Ltd,BW-2026-0412,627.00,"currency: invoice is GBP, the organisation's base currency is USD and foreign-currency bills are not handled"
+2026-11-05T17:32:02Z,kestrel_invoice_scanned.pdf,KESTREL MARINE SERVICES LLC,KMS-88317,5145.00,invoice_date: model marked it low confidence | due_date: model marked it low confidence

@@ -1,0 +1,8 @@
+$ python  # read-only: GET /Organisation, GET /Invoices/{id}, GET /Invoices/{id}/History for the three bills
+Organisation: Demo Company (Global)  base currency USD  demo company: True
+GJ-7734        ACCPAY  DRAFT  Greenleaf Janitorial Inc.        total    906.40 USD  3 lines, codes ['408', '429', '453']
+   history note: [TEST RECORD, portfolio demo] Created by ai-document-extractor from greenleaf_janitorial_invoice.xlsx.
+HPS-2291       ACCPAY  DRAFT  Harborline Print & Sign Co.      total    539.28 USD  4 lines, codes ['400', '429', '461']
+   history note: [TEST RECORD, portfolio demo] Created by ai-document-extractor from harborline_print_invoice.docx.
+SR-10482       ACCPAY  DRAFT  Summit Ridge IT Services LLC     total  1,930.53 USD  4 lines, codes ['412', '429', '473', '485']
+   history note: [TEST RECORD, portfolio demo] Created by ai-document-extractor from summit_it_invoice.pdf.

@@ -2,16 +2,19 @@
 
     python scripts/render_xero_media.py   (needs: pip install playwright && playwright install chromium)
 
-1. media/xero-dry-run.png  the real dry run on five saved invoice extractions (no Xero call)
-2. media/xero-tests.png    the 55 Xero tests passing against the fake Xero
+1. media/xero-bill-readback.png  the three draft bills read back from Xero's Demo Company by id
+2. media/xero-live-rerun.png     the live re-run: duplicates skipped, held invoices, token refresh
+
+Bill ids are shortened in the images; the full output is in examples/xero/live-run/.
 """
 import html
+import re
 from pathlib import Path
 
 from playwright.sync_api import sync_playwright
 
 ROOT = Path(__file__).resolve().parent.parent
-RUN = ROOT / "examples" / "xero"
+RUN = ROOT / "examples" / "xero" / "live-run"
 MEDIA = ROOT / "media"
 MONO = "'SF Mono', Menlo, Consolas, monospace"
 
@@ -20,9 +23,9 @@ def colour(line: str) -> str:
     t = html.escape(line)
     if line.startswith("$"):
         return f"<span style='color:#7ee787'>{t}</span>"
-    if "DRY RUN" in line or "PASSED" in line or "passed" in line:
+    if "DRAFT" in line or "refreshed" in line:
         return f"<span style='color:#3fb950'>{t}</span>"
-    if "HELD" in line:
+    if "HELD" in line or "DUPLICATE" in line:
         return f"<span style='color:#d29922'>{t}</span>"
     if line.strip().startswith("!"):
         return f"<span style='color:#f85149'>{t}</span>"
@@ -41,36 +44,22 @@ def page_for(lines: list[str], title: str) -> str:
 </div></body></html>"""
 
 
-def dry_run_lines() -> list[str]:
-    # The summaries only: the JSON payloads after each one are cut, except the first.
-    out, in_json, shown_json = [], False, False
-    for line in (RUN / "1-dry-run.txt").read_text().splitlines():
-        if line == "{":
-            in_json = True
-            if not shown_json:
-                out.append(line)
-            continue
-        if in_json:
-            if line == "}":
-                in_json = False
-                if not shown_json:
-                    out.append(line)
-                    shown_json = True
-            elif not shown_json:
-                out.append(line)
-            continue
-        out.append(line)
-    return out
+def run_lines(name: str) -> list[str]:
+    # Shorten Xero bill ids (8 hex characters, then an ellipsis).
+    text = (RUN / name).read_text()
+    text = re.sub(r"\b([0-9a-f]{8})-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}\b", r"\1...", text)
+    return text.splitlines()
 
 
 def main():
     MEDIA.mkdir(exist_ok=True)
     pages = [
-        (page_for(dry_run_lines(), "Real dry run, 5 November 2026: five saved invoice extractions to Xero bill "
-                                   "payloads. No Xero call is made in a dry run."), "xero-dry-run.png"),
-        (page_for((RUN / "2-mocked-tests.txt").read_text().splitlines(),
-                  "pytest tests/test_xero.py -v  (Xero mocked over HTTP, built to Xero's documented shapes)"),
-         "xero-tests.png"),
+        (page_for(run_lines("3-independent-readback.txt"),
+                  "Live, 5 November 2026: the three draft bills read back from Xero's Demo Company by id"),
+         "xero-bill-readback.png"),
+        (page_for(run_lines("2-rerun-duplicates.txt"),
+                  "Live, 5 November 2026: the same five invoices pushed again to Xero's Demo Company"),
+         "xero-live-rerun.png"),
     ]
     with sync_playwright() as p:
         b = p.chromium.launch(headless=True)
