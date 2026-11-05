@@ -1,0 +1,27 @@
+# Which Xero account code each invoice line goes to.
+# Rules are checked in order against the line's description (case-insensitive,
+# whole words, any keyword matches). The first match wins. A line no rule
+# matches, or a code the organisation doesn't have as an active expense
+# account, goes to default_account, and the run summary says so.
+# The codes below are Xero's standard chart of accounts; run
+# `xero-push --show-setup` to list the real ones in your organisation.
+default_account: {code: "429", name: General Expenses}
+
+# How tax is posted:
+#   line      the invoice's tax goes on its own line to tax_account, with no Xero
+#             tax rate (right for a business that is not tax/VAT registered).
+#   tax_type  every line gets tax_type and Xero works the tax out; the push is
+#             held if that rate doesn't give the tax printed on the invoice.
+#             For a VAT/GST registered business (e.g. INPUT2 for UK 20% VAT).
+tax_mode: line
+tax_account: {code: "429", name: General Expenses}
+# tax_type: INPUT2
+
+rules:
+  - {code: "485", name: Subscriptions, keywords: [licence, license, subscription, saas, "365"]}
+  - {code: "473", name: Repairs and Maintenance, keywords: [laptop repair, hardware repair, screen replacement]}
+  - {code: "412", name: Consulting & Accounting, keywords: [managed it, it support, consulting, consultancy, advisory]}
+  - {code: "461", name: Printing & Stationery, keywords: [business cards, letterhead, printing, print run, copier paper, toner]}
+  - {code: "400", name: Advertising, keywords: [banner, signage, sign, flyer, poster]}
+  - {code: "408", name: Cleaning, keywords: [office cleaning, deep clean]}
+  - {code: "453", name: Office Expenses, keywords: [supplies, consumables, soap, paper towels]}

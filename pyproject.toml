@@ -22,9 +22,10 @@ dependencies = [
 [project.scripts]
 extract = "doc_extractor.cli:main"
 qbo-push = "doc_extractor.quickbooks.cli:main"
+xero-push = "doc_extractor.xero.cli:main"
 
 [tool.setuptools]
-packages = ["doc_extractor", "doc_extractor.quickbooks"]
+packages = ["doc_extractor", "doc_extractor.quickbooks", "doc_extractor.xero"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

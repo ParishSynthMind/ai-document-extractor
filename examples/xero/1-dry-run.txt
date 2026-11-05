@@ -1,0 +1,178 @@
+$ xero-push examples/quickbooks/*.qbo-input.json --dry-run --out-dir examples/xero
+brightwater_invoice.pdf: DRY RUN (no API call)  Brightwater Office Supplies Ltd #BW-2026-0412  total 627.00
+        258.00  461   Printing & Stationery      A4 copier paper, 80gsm (box of 5 reams)
+        192.00  461   Printing & Stationery      Black toner cartridge TN-2420
+         72.50  429   General Expenses           Desk organiser, mesh
+        104.50  429   General Expenses           Tax shown on the invoice
+  - not checked in a dry run: base currency, account codes, tax rate, duplicates
+{
+  "Type": "ACCPAY",
+  "Contact": {
+    "ContactID": "<found or created at push time>"
+  },
+  "Date": "2026-10-14",
+  "InvoiceNumber": "BW-2026-0412",
+  "CurrencyCode": "GBP",
+  "Status": "DRAFT",
+  "LineAmountTypes": "NoTax",
+  "LineItems": [
+    {
+      "Description": "A4 copier paper, 80gsm (box of 5 reams)",
+      "Quantity": 12.0,
+      "UnitAmount": 21.5,
+      "AccountCode": "461"
+    },
+    {
+      "Description": "Black toner cartridge TN-2420",
+      "Quantity": 4.0,
+      "UnitAmount": 48.0,
+      "AccountCode": "461"
+    },
+    {
+      "Description": "Desk organiser, mesh",
+      "Quantity": 10.0,
+      "UnitAmount": 7.25,
+      "AccountCode": "429"
+    },
+    {
+      "Description": "Tax shown on the invoice",
+      "Quantity": 1.0,
+      "UnitAmount": 104.5,
+      "AccountCode": "429"
+    }
+  ],
+  "DueDate": "2026-11-13"
+}
+greenleaf_janitorial_invoice.xlsx: DRY RUN (no API call)  Greenleaf Janitorial Inc. #GJ-7734  total 906.40
+        700.00  408   Cleaning                   Weekly office cleaning, October
+         86.40  453   Office Expenses            Restroom supplies (soap, paper towels)
+        120.00  429   General Expenses           Floor buffing, reception
+  - not checked in a dry run: base currency, account codes, tax rate, duplicates
+{
+  "Type": "ACCPAY",
+  "Contact": {
+    "ContactID": "<found or created at push time>"
+  },
+  "Date": "2026-10-31",
+  "InvoiceNumber": "GJ-7734",
+  "CurrencyCode": "USD",
+  "Status": "DRAFT",
+  "LineAmountTypes": "NoTax",
+  "LineItems": [
+    {
+      "Description": "Weekly office cleaning, October",
+      "Quantity": 4.0,
+      "UnitAmount": 175.0,
+      "AccountCode": "408"
+    },
+    {
+      "Description": "Restroom supplies (soap, paper towels)",
+      "Quantity": 1.0,
+      "UnitAmount": 86.4,
+      "AccountCode": "453"
+    },
+    {
+      "Description": "Floor buffing, reception",
+      "Quantity": 1.0,
+      "UnitAmount": 120.0,
+      "AccountCode": "429"
+    }
+  ],
+  "DueDate": "2026-11-30"
+}
+harborline_print_invoice.docx: DRY RUN (no API call)  Harborline Print & Sign Co. #HPS-2291  total 539.28
+        290.00  400   Advertising                Vinyl window banner, 6ft x 2ft
+        154.00  461   Printing & Stationery      Business cards, 500 per box
+         60.00  429   General Expenses           Design proof and setup
+         35.28  429   General Expenses           Tax shown on the invoice
+  - not checked in a dry run: base currency, account codes, tax rate, duplicates
+{
+  "Type": "ACCPAY",
+  "Contact": {
+    "ContactID": "<found or created at push time>"
+  },
+  "Date": "2026-10-30",
+  "InvoiceNumber": "HPS-2291",
+  "CurrencyCode": "USD",
+  "Status": "DRAFT",
+  "LineAmountTypes": "NoTax",
+  "LineItems": [
+    {
+      "Description": "Vinyl window banner, 6ft x 2ft",
+      "Quantity": 2.0,
+      "UnitAmount": 145.0,
+      "AccountCode": "400"
+    },
+    {
+      "Description": "Business cards, 500 per box",
+      "Quantity": 4.0,
+      "UnitAmount": 38.5,
+      "AccountCode": "461"
+    },
+    {
+      "Description": "Design proof and setup",
+      "Quantity": 1.0,
+      "UnitAmount": 60.0,
+      "AccountCode": "429"
+    },
+    {
+      "Description": "Tax shown on the invoice",
+      "Quantity": 1.0,
+      "UnitAmount": 35.28,
+      "AccountCode": "429"
+    }
+  ],
+  "DueDate": "2026-11-14"
+}
+kestrel_invoice_scanned.pdf: HELD FOR REVIEW  KESTREL MARINE SERVICES LLC #KMS-88317  total 5,145.00
+  ! invoice_date: model marked it low confidence
+  ! due_date: model marked it low confidence
+  - subtotal was medium confidence (4900)
+  - tax_amount was medium confidence (245)
+  - total_amount was medium confidence (5145)
+summit_it_invoice.pdf: DRY RUN (no API call)  Summit Ridge IT Services LLC #SR-10482  total 1,930.53
+      1,200.00  412   Consulting & Accounting    Managed IT support, October 2026
+        330.00  485   Subscriptions              Microsoft 365 Business licences
+        370.00  473   Repairs and Maintenance    Laptop repair (screen replacement)
+         30.53  429   General Expenses           Tax shown on the invoice
+  - not checked in a dry run: base currency, account codes, tax rate, duplicates
+{
+  "Type": "ACCPAY",
+  "Contact": {
+    "ContactID": "<found or created at push time>"
+  },
+  "Date": "2026-10-28",
+  "InvoiceNumber": "SR-10482",
+  "CurrencyCode": "USD",
+  "Status": "DRAFT",
+  "LineAmountTypes": "NoTax",
+  "LineItems": [
+    {
+      "Description": "Managed IT support, October 2026",
+      "Quantity": 1.0,
+      "UnitAmount": 1200.0,
+      "AccountCode": "412"
+    },
+    {
+      "Description": "Microsoft 365 Business licences",
+      "Quantity": 15.0,
+      "UnitAmount": 22.0,
+      "AccountCode": "485"
+    },
+    {
+      "Description": "Laptop repair (screen replacement)",
+      "Quantity": 2.0,
+      "UnitAmount": 185.0,
+      "AccountCode": "473"
+    },
+    {
+      "Description": "Tax shown on the invoice",
+      "Quantity": 1.0,
+      "UnitAmount": 30.53,
+      "AccountCode": "429"
+    }
+  ],
+  "DueDate": "2026-11-27"
+}
+
+1 held, 4 dry-run

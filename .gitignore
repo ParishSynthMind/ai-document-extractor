@@ -10,3 +10,6 @@ results/
 .qbo_tokens.json
 *.tmp
 qbo-results/
+.xero_tokens.json
+xero-results/
+ACCOUNT-NEEDS.md

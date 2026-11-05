@@ -1,6 +1,6 @@
 # AI Document Extractor
 
-Turns PDFs (digital or scanned), Word files and Excel/CSV files into clean, structured data. You pick a document type (invoice, permit application, staff credential, or your own), Claude pulls out the fields as strict JSON, and every field comes back with a confidence level and the exact snippet of the document it was read from. Code then checks each answer against the document, and anything doubtful goes on a "needs review" list. The results can fill a PDF form, add a row to an Excel sheet, go into a CSV for a whole folder at once, or become a Bill in QuickBooks Online (see [QuickBooks Online add-on](#quickbooks-online-add-on)).
+Turns PDFs (digital or scanned), Word files and Excel/CSV files into clean, structured data. You pick a document type (invoice, permit application, staff credential, or your own), Claude pulls out the fields as strict JSON, and every field comes back with a confidence level and the exact snippet of the document it was read from. Code then checks each answer against the document, and anything doubtful goes on a "needs review" list. The results can fill a PDF form, add a row to an Excel sheet, go into a CSV for a whole folder at once, or become a Bill in QuickBooks Online (see [QuickBooks Online add-on](#quickbooks-online-add-on)) or a draft bill in Xero (see [Xero add-on](#xero-add-on)).
 
 ![A scanned invoice read with OCR, and the form Claude filled from it with doubtful fields boxed](media/scan-to-review-form.png)
 
@@ -21,6 +21,7 @@ flowchart LR
     F --> H[Excel row]
     F --> I[Batch CSV]
     F --> J[QuickBooks Online Bill<br/>via Accounting API v3]
+    F --> K[Xero draft bill<br/>via Accounting API 2.0]
 ```
 
 1. **Load.** PDFs are read through their text layer. Any page with almost no text is treated as scanned: it is rendered at 300 dpi and read with Tesseract OCR, so a mixed PDF (some typed pages, some scanned) works too. Word files are read in document order, tables included. Excel and CSV files are read sheet by sheet.
@@ -98,11 +99,11 @@ All invented: fake companies, fake people, fake numbers. `samples/make_samples.p
 ## Tests
 
 ```bash
-pytest          # 66 tests, Claude and QuickBooks mocked, no keys needed
+pytest          # 121 tests, Claude, QuickBooks and Xero mocked, no keys needed
 ruff check .    # lint
 ```
 
-They cover schema loading and validation, the strict JSON schema sent to Claude, every loader (including a real Tesseract OCR test, skipped if Tesseract isn't installed), each check in the verification step, form filling and the review copy's boxes, Excel rows and colours, batch CSV with a failing file, the CLI, and the shape of the Claude request. The QuickBooks tests (29 of them) run against a fake QuickBooks over HTTP; see the add-on section. GitHub Actions runs lint and tests on every push with Tesseract installed and no secrets.
+They cover schema loading and validation, the strict JSON schema sent to Claude, every loader (including a real Tesseract OCR test, skipped if Tesseract isn't installed), each check in the verification step, form filling and the review copy's boxes, Excel rows and colours, batch CSV with a failing file, the CLI, and the shape of the Claude request. The QuickBooks tests (29 of them) and the Xero tests (55) run against a fake QuickBooks and a fake Xero over HTTP; see the add-on sections. GitHub Actions runs lint and tests on every push with Tesseract installed and no secrets.
 
 ## Tested live
 
@@ -193,12 +194,80 @@ Also checked live against the sandbox: a deliberately bad access token got a rea
 ### What is NOT proven
 
 - **A production QuickBooks company.** Only an Intuit sandbox. Production needs an app that has passed Intuit's production review, and a real company's chart of accounts will need its own `qbo_accounts.yaml`.
-- **Xero** (or any other accounting system). Not built.
+- **Xero.** Built since as its own add-on, see below.
 - **Multicurrency.** A foreign-currency invoice is held, not posted. Posting it needs multicurrency switched on in the company and an exchange-rate decision.
 - **Sales tax / VAT codes.** Tax is posted as an expense line to a tax account. A VAT-registered (UK, UAE) company that reclaims input VAT would want QuickBooks tax codes on each line instead; that isn't built.
 - **The `invalid_grant` path live.** It is tested with a mocked reply; breaking the real sandbox token to prove it wasn't worth locking the sandbox out.
 - **Attaching the PDF to the Bill**, bill approval workflows, paying the Bill. Not built.
 - Line-item matching is by keyword. It is predictable and easy to audit, but it is not clever; anything it can't place goes to the default account and is reported.
+
+## Xero add-on
+
+The same checked invoice output, sent to **Xero** instead: each invoice becomes a **draft bill** (in Xero's API, an `Invoice` of `Type: ACCPAY`) through the Accounting API 2.0. Built because clients asked for exactly this with Xero by name. It follows the QuickBooks add-on's design step for step, adjusted to how Xero really works.
+
+![Real dry run: five saved invoice extractions turned into Xero bill payloads, one held for review](media/xero-dry-run.png)
+
+*Real dry run, 5 November 2026, on the five invoice extractions saved by the QuickBooks live run (so no new Claude calls). A dry run makes no Xero call. The rough scan is held because its dates are ambiguous.*
+
+### What it does, in order
+
+1. **Readiness check, no API calls.** Same rules as QuickBooks: a missing or low-confidence field the bill uses, lines that don't add up to the subtotal, or subtotal + tax not equal to the total, and the invoice is **held** and written to `review_list.csv`. Xero's own limits are checked too (invoice number and contact name up to 255 printable ASCII characters).
+2. **Dry run** (`--dry-run`) prints the exact payload and stops. A test proves it makes zero HTTP requests.
+3. **Base currency.** Read from `GET /Organisation`. An invoice in another currency is held, before any contact is created.
+4. **Account codes.** Xero posts by account **code**, so [`config/xero_accounts.yaml`](config/xero_accounts.yaml) maps keywords to codes (whole words only). Every code is checked against `GET /Accounts` (active expense, overhead or direct-cost accounts only). A code the organisation doesn't have goes to the default account, **and the summary says so**.
+5. **Tax, two ways** (`tax_mode` in the config):
+   - `line` (default): the invoice's tax is its own line, with no Xero tax rate. Right for a business that isn't VAT/GST registered.
+   - `tax_type`: every line gets a Xero tax type (for example `INPUT2`, UK 20% VAT on expenses) and Xero works the tax out. Before posting, the rate is read from `GET /TaxRates` and the bill is **held** if that rate doesn't give the tax printed on the invoice.
+6. **Contact.** Searched with `searchTerm`, then matched on the **exact** name in code (so "Summit Ridge IT Services LLC West" never matches "Summit Ridge IT Services LLC"). If it exists, the tool asks Xero for that contact's bills with the same invoice number (`ContactIDs` + `InvoiceNumbers` + `Statuses` filters) and **refuses to create a second one**. Deleted or voided bills don't count. An invoice number with a comma in it (which would break Xero's comma-separated filter) is checked by paging through the contact's bills instead. If the contact doesn't exist, it is created.
+7. **Create, note, read back.** `PUT /Invoices` creates the bill as **DRAFT** (or `--status SUBMITTED`, "awaiting approval"; approving is refused in code, that stays a person's job). The `Contact` element carries only the `ContactID`, as Xero's docs require, so the push can't overwrite the contact's details. A history note says which file it came from (`PUT /Invoices/{id}/History`), then the bill is read back by id and its total, number, contact and type are compared. Any Xero `Warnings` on the reply are shown, not hidden.
+
+### Tokens, done properly
+
+- **One-time connect:** `xero-push --connect` runs Xero's standard authorisation code flow. It opens Xero's login page with a random `state`, catches the redirect on `http://localhost:8723/callback` (Xero doesn't allow `127.0.0.1`), refuses a redirect whose `state` doesn't match, swaps the one-time code for tokens and saves the organisation's tenant id. It keeps the organisation connected **in this login** (matched on the token's `authentication_event_id`), ignores Practice Manager tenants, and asks for `--tenant-name` if several were ticked.
+- **Least-privilege granular scopes:** `offline_access accounting.invoices accounting.contacts accounting.settings.read`. Xero assigns granular scopes to apps created since March 2026; the broad `accounting.transactions` is deprecated and not requested.
+- **Rotating refresh tokens:** every refresh returns a new refresh token and the old one dies after a 30 minute grace period, so the new token is saved **before any other call** (a test checks the order). Access tokens (30 minutes) live in memory only.
+- **Pluggable token store:** `--store keychain` (macOS Keychain items `xero-client-id`, `xero-client-secret`, `xero-tenant-id`, `xero-refresh-token`, written through `security -i` on stdin so a token never shows in the process list) or `--store file` (`XERO_CLIENT_ID` and `XERO_CLIENT_SECRET` from the environment, written values in a `0600` JSON file, git-ignored). The stores refuse to ever write the client secret.
+- **401:** one refresh and one retry; a second 401 says the organisation may have disconnected the app. **403** says which scope is missing. **`invalid_grant`** stops the whole run with "run `--connect` once" instead of failing every invoice the same way.
+- **429:** waits the `Retry-After` seconds Xero sends (minute limit: 60 calls per organisation), up to 3 times, then retries. If Xero says the **daily** limit is hit, it stops at once with the wait time instead of sleeping for hours. The calls left (`X-MinLimit-Remaining`, `X-DayLimit-Remaining`) are printed after each run.
+- **400:** Xero's `ValidationErrors` messages, shown in full.
+- No token or secret is ever printed, logged or put in an error message (there is a test for that).
+
+### Run it
+
+```bash
+pip install -e .
+# credentials: Keychain items xero-client-id / xero-client-secret (account set with --keychain-account),
+# or XERO_CLIENT_ID / XERO_CLIENT_SECRET with --store file
+
+xero-push --connect --store keychain        # once: log in to Xero, tick the organisation
+xero-push --show-setup --store keychain     # base currency, expense account codes, tax rates
+
+# read the invoices and show the bills that would be created (Claude is called, Xero is not)
+xero-push samples/invoices_us/*.* --dry-run --out-dir xero-results
+
+# push the saved extractions (no second Claude call). Saved .qbo-input.json files work too.
+xero-push xero-results/*.xero-input.json --out-dir xero-results --store keychain --label "[TEST]"
+
+# clean up a test draft
+xero-push --delete-bill <InvoiceID> --store keychain
+```
+
+### Tested on 5 November 2026: not yet live against Xero
+
+- **Real dry run** on five saved invoice extractions (output in [`examples/xero/`](examples/xero/)): four bill payloads built, the rough scan held for its ambiguous dates.
+- **55 tests against a fake Xero** over HTTP, built to the request and reply shapes in Xero's documentation (token endpoint, `/connections`, `Organisation`, `Accounts`, `TaxRates`, `Contacts`, `Invoices`, `History`, the 400 `ValidationException` body, 401, 403 and 429 with `Retry-After` and `X-Rate-Limit-Problem`). The connect flow is tested end to end on a real localhost socket. While writing them, the tests caught a real bug: a line of 3 x 3.3333 would have posted as 9.99 instead of 10.00, because Xero keeps 2 decimals on the unit price; such lines are now posted as 1 x the line amount.
+
+![The Xero tests passing](media/xero-tests.png)
+
+### What is NOT proven
+
+- **A live Xero organisation.** Nothing here has been sent to real Xero yet. The next step is a run against Xero's free Demo Company: connect, show setup, push the samples, re-run to hit the duplicate guard, delete a test draft. This section will be updated with that run.
+- **Xero's exact wording** of errors and warnings in a real run. The fake uses the shapes from the docs, not captured replies.
+- **The default account codes.** They are Xero's standard chart (429 General Expenses and so on). A real organisation may differ; `--show-setup` lists its real codes, and unknown codes fall back to the default with a note.
+- **Multicurrency.** Foreign-currency invoices are held, not posted.
+- **US automatic sales tax** organisations (Xero calculates tax itself there and those invoices are read-only for tax fields). Not tried.
+- **Attaching the PDF to the bill**, approving, or paying it. Not built.
+- **A certified Xero app.** New Xero apps start on the starter tier: up to 5 connected organisations and 1,000 API calls per organisation per day. Selling this widely needs a higher tier, and the Xero App Store needs certification.
 
 ## Limitations
 
@@ -213,12 +282,12 @@ Also checked live against the sandbox: a deliberately bad access token got a rea
 
 - The API key is read from the environment only. `.env` is git-ignored and `.env.example` holds a placeholder.
 - Document text goes to the Anthropic API for extraction. For sensitive documents, check that fits the client's data rules before use.
-- The tool never sends, approves or pays anything. The QuickBooks add-on creates Bills (unpaid, for a person to approve and pay) and nothing else.
-- QuickBooks credentials come from the Keychain or the environment; the rotated refresh token is written to the Keychain or a `0600` file that is git-ignored. Nothing secret is in the repo.
+- The tool never sends, approves or pays anything. The QuickBooks add-on creates Bills (unpaid, for a person to approve and pay) and the Xero add-on creates DRAFT (or SUBMITTED) bills; approving is refused in code.
+- QuickBooks and Xero credentials come from the Keychain or the environment; the rotated refresh token is written to the Keychain or a `0600` file that is git-ignored. Nothing secret is in the repo.
 
 ## Stack
 
-Python · Anthropic Claude API (structured outputs, Sonnet 5.5) · QuickBooks Online Accounting API v3 (OAuth 2.0, rotating refresh tokens) · requests · pdfplumber · Tesseract OCR (pytesseract) · pypdf (form filling, annotations) · python-docx · openpyxl · PyYAML · pytest · responses · ruff · GitHub Actions
+Python · Anthropic Claude API (structured outputs, Sonnet 5.5) · QuickBooks Online Accounting API v3 (OAuth 2.0, rotating refresh tokens) · Xero Accounting API 2.0 (OAuth 2.0 auth code flow, granular scopes) · requests · pdfplumber · Tesseract OCR (pytesseract) · pypdf (form filling, annotations) · python-docx · openpyxl · PyYAML · pytest · responses · ruff · GitHub Actions
 
 ---
 Part of a small portfolio of tested automation/AI builds; see [ParishSynthMind](https://github.com/ParishSynthMind) for the others.
